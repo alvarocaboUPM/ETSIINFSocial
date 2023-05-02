@@ -44,9 +44,10 @@ RUN systemctl enable tomcat.service
 # Copy the source code into the container at /app
 COPY . /app
 
-# Build the application
-#RUN ant
+# Create and deploy Axis2 web application
+WORKDIR $AXIS2_HOME/webapp
+RUN ant
+RUN cp $AXIS2_HOME/dist/axis2.war $CATALINA_HOME/webapps/
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
-CMD ["startup.sh", "run"]
