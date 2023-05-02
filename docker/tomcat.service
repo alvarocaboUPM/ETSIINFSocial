@@ -6,16 +6,16 @@ After=network.target
 Type=forking
 
 Environment=JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-Environment=CATALINA_PID=/app/tomcat.pid
-Environment=CATALINA_HOME=/app/apache-tomcat-7.0.59
-Environment=CATALINA_BASE=/app/apache-tomcat-7.0.59
+Environment=CATALINA_PID=/var/run/tomcat.pid
+Environment=CATALINA_HOME=/usr/share/tomcat
+Environment=CATALINA_BASE=/usr/share/tomcat
 Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
 
-ExecStart=/app/apache-tomcat-7.0.59/bin/startup.sh
-ExecStop=/app/apache-tomcat-7.0.59/bin/shutdown.sh
+ExecStart=/usr/share/tomcat/bin/startup.sh
+ExecStop=/usr/share/tomcat/bin/shutdown.sh
 
-User=root
-Group=root
+User=tomcat
+Group=tomcat
 UMask=0007
 RestartSec=10
 Restart=always

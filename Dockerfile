@@ -21,7 +21,12 @@ RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-7/v$TOMCAT_VERSION/bin
     tar -xzf apache-tomcat-$TOMCAT_VERSION.tar.gz && \
     mv apache-tomcat-$TOMCAT_VERSION /usr/share/tomcat && \
     rm apache-tomcat-$TOMCAT_VERSION.tar.gz && \
-    ln -s /usr/share/tomcat/bin/catalina.sh /usr/bin/catalina.sh
+    ln -s /usr/share/tomcat/bin/catalina.sh /usr/bin/catalina.sh && \
+    ln -s /usr/share/tomcat/bin/startup.sh /usr/bin/startup.sh
+
+RUN groupadd tomcat && \
+    useradd -s /bin/false -g tomcat -d /usr/share/tomcat tomcat && \
+    chown -R tomcat:tomcat /usr/share/tomcat
 
 # Install Axis2
 RUN wget -q https://archive.apache.org/dist/axis/axis2/java/core/$AXIS2_VERSION/axis2-$AXIS2_VERSION-bin.zip && \
@@ -50,4 +55,4 @@ RUN ant
 RUN cp $AXIS2_HOME/dist/axis2.war $CATALINA_HOME/webapps/
 
 # Start Tomcat
-CMD ["catalina.sh", "run"]
+CMD ["startup.sh", "run"]
