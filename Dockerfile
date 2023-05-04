@@ -4,7 +4,7 @@ FROM openjdk:7-jdk
 # Set the working directory to /app
 WORKDIR /app
 
-# Set environment variables for Ant, Tomcat, and Axis2
+# Set environment variables for Ant, Tomcat, Maven and Axis2
 ENV ANT_VERSION 1.9.4
 ENV TOMCAT_VERSION 7.0.59
 ENV AXIS2_VERSION 1.6.2
@@ -22,8 +22,9 @@ RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-7/v$TOMCAT_VERSION/bin
     mv apache-tomcat-$TOMCAT_VERSION /usr/share/tomcat && \
     rm apache-tomcat-$TOMCAT_VERSION.tar.gz && \
     ln -s /usr/share/tomcat/bin/catalina.sh /usr/bin/catalina.sh && \
-    ln -s /usr/share/tomcat/bin/startup.sh /usr/bin/startup.sh && \
-    ln -s /usr/share/tomcat/bin/shutdown.sh /usr/bin/shutdown.sh
+    ln -s /usr/share/tomcat/bin/startup.sh /usr/bin/tomcat-up && \
+    ln -s /usr/share/tomcat/bin/shutdown.sh /usr/bin/tomcat-down && \
+    ln -s /workspaces/ETSIINFSocial/scripts/deploy.sh /usr/bin/ant-deploy
 
 # Some Tomcat config
 RUN groupadd tomcat && \
@@ -40,11 +41,14 @@ RUN wget -q https://archive.apache.org/dist/axis/axis2/java/core/$AXIS2_VERSION/
     rm axis2-$AXIS2_VERSION-bin.zip
 
 # Set environment variables for Axis2 and Tomcat
+#ENV MAVEN_HOME /usr/share/maven
 ENV AXIS2_HOME /usr/share/axis2
 ENV CATALINA_HOME /usr/share/tomcat
 # Set enviroments variables for Axis2 WSLD2JAVA command
 ENV WSLD_USI porter.dia.fi.upm.es:8080/practica2223/ETSIINFSocial.wsdl
 ENV PKG_NAME es.upm.etsiinf.sos
+ENV PROJECT_NAME soap-sos-api
+ENV PROJECT_SOURCE /workspaces/ETSIINFSocial/soap-sos-api
 
 # Expose Tomcat port
 EXPOSE 8080
@@ -61,6 +65,3 @@ COPY . /app
 WORKDIR $AXIS2_HOME/webapp
 RUN ant
 RUN cp $AXIS2_HOME/dist/axis2.war $CATALINA_HOME/webapps/
-
-# Start Tomcat
-CMD ["startup.sh", "run"]
