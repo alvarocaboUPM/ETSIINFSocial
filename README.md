@@ -6,6 +6,13 @@ SOAP webservice emulating a social network using Java Axio2
 
 [Álvaro Cabo Ciudad](https://github.com/alvarocabo)
 
+## TODO
+
+- Completar skeleton
+- Completar cliente
+   - Crear proyecto soap-sos-client
+   - Crear una clase main (archivo)/ funcion
+
 ## Dev-Start-Up
 
 ### Requirements

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #      DEPLOY SCRIPT FOR TOMCAT SOAP APIs   #
-#              RUN USING SUDO               #
 #              by Álvaro Cabo               #
 
 cd $PROJECT_SOURCE
