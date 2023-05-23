@@ -8,7 +8,6 @@
             <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only" class="es.upm.etsiinf.sos.ETSIINFSocialMessageReceiverInOnly"/>
         </messageReceivers>
         <parameter name="ServiceClass">es.upm.etsiinf.sos.ETSIINFSocialSkeleton</parameter>
-        <parameter name="useOriginalwsdl">true</parameter>
         <parameter name="modifyUserWSDLPortAddress">true</parameter>
         <operation name="login" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://sos.etsiinf.upm.es">
             <actionMapping>urn:login</actionMapping>
