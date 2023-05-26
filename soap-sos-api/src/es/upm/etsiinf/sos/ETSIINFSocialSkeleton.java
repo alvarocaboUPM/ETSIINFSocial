@@ -161,6 +161,7 @@ public class ETSIINFSocialSkeleton {
             es.upm.etsiinf.sos.AddUser addUser) {
         // TODO : fill this with the necessary business logic
         throw new java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#addUser");
+
     }
 
 }
