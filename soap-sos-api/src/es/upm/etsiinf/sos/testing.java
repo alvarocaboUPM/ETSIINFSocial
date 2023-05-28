@@ -18,7 +18,7 @@ public class testing {
         Login prueba_login = new Login();
         User aux = new User();
         aux.setName("pabloso");
-        aux.setPwd("pablitoclavounclabito22");
+        aux.setPwd("pablitoclavounclabito2234");
         prueba_login.setArgs0(aux);
         System.out.println("\n");
         skeleton.login(prueba_login).get_return().getResponse();
@@ -30,7 +30,7 @@ public class testing {
          */
         es.upm.etsiinf.sos.AddUser user1 = new AddUser();
         Username prueba = new Username();
-        prueba.setUsername("pabloso");
+        prueba.setUsername("Jaime");
         user1.setArgs0(prueba);
         System.out.println("\n");
         skeleton.addUser(user1);
@@ -68,9 +68,37 @@ public class testing {
         pwd_pair.setOldpwd("pablitoclavounclabito22");
         pwd.setArgs0(pwd_pair);
 
-        skeleton.changePassword(pwd);
+        //skeleton.changePassword(pwd);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
+        
+        
+        /*
+         * PRUEBAS addFriend
+         */
+        AddFriend friend = new AddFriend();
+        Username user_friend = new Username();
+        user_friend.setUsername("Jaime");
+        friend.setArgs0(user_friend);
+
+        AddFriendResponse res_friend = new AddFriendResponse();
+        res_friend = skeleton.addFriend(friend);
+        System.out.println(res_friend.get_return().getResponse());
+
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");
+
+        /*
+         * PRUEBAS removeFriend
+         */
+
+        RemoveFriend removeF = new RemoveFriend();
+        RemoveFriendResponse responseFriend = new RemoveFriendResponse();
+        Username userRemoveF = new Username();
+        userRemoveF.setUsername("Julito");
+        removeF.setArgs0(userRemoveF);
+        responseFriend = skeleton.removeFriend(removeF);
+        System.out.println(responseFriend.get_return().getResponse());
     }
     
 

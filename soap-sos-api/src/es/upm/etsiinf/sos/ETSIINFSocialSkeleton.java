@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.apache.axis2.AxisFault;
 
+import es.upm.etsiinf.sos.model.xsd.FriendList;
 import es.upm.etsiinf.sos.model.xsd.Response;
 import es.upm.etsiinf.sos.model.xsd.User;
 import es.upm.etsiinf.sos.model.xsd.Username;
@@ -36,6 +37,9 @@ public class ETSIINFSocialSkeleton {
 	private User userID;
 	private static boolean rootIsPresent = false;
     private boolean adminLoggedIn = false;
+    private static List<User> friends = new ArrayList<User>();
+    FriendList friendsList = new FriendList();
+    
     
     
 
@@ -174,13 +178,24 @@ public class ETSIINFSocialSkeleton {
                 return responseFinal; 
     }
 
-    private void printList() {
+    private void printListConnected() {
 		int i = 0;
 		System.out.println("========================= <List> =========================");
 		for (User value: connected) {
 			String name = value.getName();
 			String pwd = value.getPwd();
 			System.out.println("List entry [" + i + "] -> Name: " + name + "| Password: " + pwd);
+			i += 1;
+		}
+		System.out.println("========================= </List> =========================\n");
+	}
+
+    private void printListFriends() {
+		
+        String [] amigos = friendsList.getFriends();
+		System.out.println("========================= <List> =========================");
+		for (int i = 0; i<amigos.length; i++) {
+			System.out.println("List entry [" + i + "] -> Name: " + amigos[i]);
 			i += 1;
 		}
 		System.out.println("========================= </List> =========================\n");
@@ -193,6 +208,16 @@ public class ETSIINFSocialSkeleton {
 				result = true;
 			}
 		}
+		return result;
+	}
+
+    private boolean isFriend (Username user) {
+		boolean result = false;
+        String [] amigos = friendsList.getFriends();
+		for (int i = 0; i < friendsList.getFriends().length; i++) {
+            if (amigos[i].equals(user.getUsername()))
+            result = true;
+        }
 		return result;
 	}
 
@@ -326,11 +351,153 @@ public class ETSIINFSocialSkeleton {
                 res.set_return(result);
             }
         }
-        return res;
+        return res;           
+    }
+
+
+
+    /**
+     * Auto generated method signature
+     * 
+     * @param addFriend
+     * @return addFriendResponse
+     * @throws RemoteException
+     */
+
+     public es.upm.etsiinf.sos.AddFriendResponse addFriend(
+        es.upm.etsiinf.sos.AddFriend addFriend) throws RemoteException {
+            es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub stub = new UPMAuthenticationAuthorizationWSSkeletonStub();
+        
+
+            Username username = addFriend.getArgs0();
+
+
+            AddFriendResponse res = new AddFriendResponse();
+            Response aux = new Response();
+
+            es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE res_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE();
+            es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser exist = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser();
+            es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username user_delete = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+            user_delete.setName(username.getUsername());
+            exist.setUsername(user_delete);
+            res_aux = stub.existUser(exist);
+            boolean check = res_aux.get_return().getResult();
             
-}
+            if (!isConnected(this.userID)) {
+                System.out.println("El usuario " + this.userID.getName() + " no ha iniciado sesión correctamente.");
+                aux.setResponse(false);
+                res.set_return(aux);
+                return res;
+            }
+
+            if (!check) {
+                System.out.println("El usuario " + username.getUsername() + " no está registrado en la red.");
+                aux.setResponse(false);
+                res.set_return(aux);
+                return res;
+            }
+            //Si no, simplemente lo añadimos como amigo
+
+            friendsList.addFriends(username.getUsername());
+            String [] amigos = friendsList.getFriends();
+            aux.setResponse(true);
+            res.set_return(aux);
+            System.out.println("El usuario " + userID.getName() + " ha añadido como amigo al usuario " + username.getUsername() + " con éxito.");
+            printListFriends();
+            return res;
+    
+    }
 
 
+    /**
+     * Auto generated method signature
+     * 
+     * @param removeFriend
+     * @return removeFriendResponse
+     * @throws RemoteException
+     */
+
+     public es.upm.etsiinf.sos.RemoveFriendResponse removeFriend(
+        es.upm.etsiinf.sos.RemoveFriend removeFriend) throws RemoteException {
+        
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub stub = new UPMAuthenticationAuthorizationWSSkeletonStub();
+        
+            
+        Username username = removeFriend.getArgs0();
+        
+
+        RemoveFriendResponse res = new RemoveFriendResponse();
+        Response response = new Response();
+
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE res_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser exist = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username user_delete = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+        user_delete.setName(username.getUsername());
+        exist.setUsername(user_delete);
+        res_aux = stub.existUser(exist);
+        boolean check = res_aux.get_return().getResult();
+
+        if (!isConnected(this.userID)) {
+            System.out.println("El usuario " + this.userID.getName() + " no ha iniciado sesión correctamente.");
+            response.setResponse(false);
+            res.set_return(response);
+            return res;
+        }
+
+        if (!check) {
+            System.out.println("El usuario " + username.getUsername() + " no está registrado en la red.");
+            response.setResponse(false);
+            res.set_return(response);
+            return res;
+        }
+
+        User user = new User();
+        user.setName(username.getUsername());
+
+        if (!isFriend(username)) {
+            System.out.println("El usuario " + userID.getName() + " no tiene añadido como amigo al usuario " + username.getUsername());
+            response.setResponse(false);
+            res.set_return(response);
+            return res;
+        }
+        // Si no, lo eliminamos
+        
+        eliminar(username.getUsername());
+        response.setResponse(true);
+        res.set_return(response);
+        System.out.println("Ha eliminado de su lista de amigos al usuario " + username.getUsername() + " con éxito.");
+        printListFriends();
+        return res;
+
+    }
+
+    public void eliminar (String amigo) {
+
+        int index = -1;
+        String [] amigos = friendsList.getFriends();
+
+        for (int i = 0; i < amigos.length; i++) {
+            if (amigos[i].equals(amigo)) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            // Crea un nuevo array con una longitud menor
+            String[] nuevoAmigos = new String[amigos.length - 1];
+
+            // Copia los elementos al nuevo array, excluyendo el elemento a eliminar
+            int j = 0;
+            for (int i = 0; i < amigos.length; i++) {
+                if (i != index) {
+                    nuevoAmigos[j] = amigos[i];
+                    j++;
+                }
+            }
+            friendsList.setFriends(nuevoAmigos);
+        } 
+    }
 
 
 
@@ -379,19 +546,7 @@ public class ETSIINFSocialSkeleton {
                 "Please implement " + this.getClass().getName() + "#getMyFriends");
     }
 
-    /**
-     * Auto generated method signature
-     * 
-     * @param addFriend
-     * @return addFriendResponse
-     */
-
-    public es.upm.etsiinf.sos.AddFriendResponse addFriend(
-            es.upm.etsiinf.sos.AddFriend addFriend) {
-        // TODO : fill this with the necessary business logic
-        throw new java.lang.UnsupportedOperationException(
-                "Please implement " + this.getClass().getName() + "#addFriend");
-    }
+    
 
     
 
@@ -409,19 +564,7 @@ public class ETSIINFSocialSkeleton {
                 "Please implement " + this.getClass().getName() + "#publishState");
     }
 
-    /**
-     * Auto generated method signature
-     * 
-     * @param removeFriend
-     * @return removeFriendResponse
-     */
-
-    public es.upm.etsiinf.sos.RemoveFriendResponse removeFriend(
-            es.upm.etsiinf.sos.RemoveFriend removeFriend) {
-        // TODO : fill this with the necessary business logic
-        throw new java.lang.UnsupportedOperationException(
-                "Please implement " + this.getClass().getName() + "#removeFriend");
-    }
+    
 
     
 
