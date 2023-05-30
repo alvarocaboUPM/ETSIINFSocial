@@ -25,27 +25,27 @@ public class testing {
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
 
+        
+        /*
+        * PRUEBAS logout
+        */
+        es.upm.etsiinf.sos.Logout logout = new Logout();
+        System.out.println("\n");
+        //skeleton.logout(logout);
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");
+        
         /*
          * PRUEBAS addUser
          */
         es.upm.etsiinf.sos.AddUser user1 = new AddUser();
         Username prueba = new Username();
-        prueba.setUsername("Jaime");
+        prueba.setUsername("Laura");
         user1.setArgs0(prueba);
         System.out.println("\n");
-        skeleton.addUser(user1);
+        //skeleton.addUser(user1);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-        
-        /*
-         * PRUEBAS logout
-         */
-        es.upm.etsiinf.sos.Logout logout = new Logout();
-        System.out.println("\n");
-       //skeleton.logout(logout);
-        System.out.println("\n");
-        System.out.println("-------------------------------------------------------------");
-
 
         /*
          * PRUEBAS removeUser
@@ -83,7 +83,15 @@ public class testing {
 
         AddFriendResponse res_friend = new AddFriendResponse();
         res_friend = skeleton.addFriend(friend);
-        System.out.println(res_friend.get_return().getResponse());
+        //System.out.println(res_friend.get_return().getResponse());
+
+        AddFriend friend3 = new AddFriend();
+        Username user_friend3 = new Username();
+        user_friend3.setUsername("Laura");
+        friend3.setArgs0(user_friend3);
+
+        AddFriendResponse res_friend3 = new AddFriendResponse();
+        res_friend3 = skeleton.addFriend(friend3);
 
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
@@ -95,10 +103,20 @@ public class testing {
         RemoveFriend removeF = new RemoveFriend();
         RemoveFriendResponse responseFriend = new RemoveFriendResponse();
         Username userRemoveF = new Username();
-        userRemoveF.setUsername("Julito");
+        userRemoveF.setUsername("Jaime");
         removeF.setArgs0(userRemoveF);
         responseFriend = skeleton.removeFriend(removeF);
-        System.out.println(responseFriend.get_return().getResponse());
+        //System.out.println(responseFriend.get_return().getResponse());
+
+
+
+        /*
+         * PRUEBAS getMyFriends
+         */
+        GetMyFriendsResponse rsp = new GetMyFriendsResponse();
+        GetMyFriends gt = new GetMyFriends();
+        rsp = skeleton.getMyFriends(gt);
+        
     }
     
 
