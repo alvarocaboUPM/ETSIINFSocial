@@ -13,16 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.axis2.AxisFault;
+
 
 import es.upm.etsiinf.sos.model.xsd.FriendList;
 import es.upm.etsiinf.sos.model.xsd.Response;
 import es.upm.etsiinf.sos.model.xsd.StatesList;
 import es.upm.etsiinf.sos.model.xsd.User;
 import es.upm.etsiinf.sos.model.xsd.Username;
-import es.upm.fi.sos.t3.backend.UPMAuthenticationAuthorizationWSSkeletonSkeleton;
-import es.upm.fi.sos.t3.backend.xsd.LoginBackEnd;
-import es.upm.fi.sos.t3.backend.xsd.UserBackEnd;
 import es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub;
 
 /**
@@ -31,17 +28,16 @@ import es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub;
 public class ETSIINFSocialSkeleton {
 
         private static Map<String, User> users = new HashMap<String, User>();
-	private static boolean instance = false;
+	
 	private static List<User> connected = new ArrayList<User>();
 	private static User root = new User();
-	private static String usernameRoot; 
 	private User userID;
 	private static boolean rootIsPresent = false;
     private boolean adminLoggedIn = false;
-    private static List<User> friends = new ArrayList<User>();
+    static List<Username> usersTotal = new ArrayList<Username>();
     FriendList friendsList = new FriendList();
     StatesList estados = new StatesList();
-    Map<String,StatesList> mapaEstados = new HashMap<String,StatesList>();
+    static Map<String,StatesList> mapaEstados = new HashMap<String,StatesList>();
     
     
     
@@ -80,6 +76,7 @@ public class ETSIINFSocialSkeleton {
             if (response.get_return().getResult()) {
                 responseFinal.setResponse(true);
                 aux_final.set_return(responseFinal); 
+                usersTotal.add(username);
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña " + response.get_return().getPassword() + " exitosamente.");
                 return aux_final;
             }
@@ -667,7 +664,7 @@ public class ETSIINFSocialSkeleton {
                 return res;
             }
 }
-
+    
     
     /**
      * Auto generated method signature
@@ -683,6 +680,7 @@ public class ETSIINFSocialSkeleton {
             StatesList states = new StatesList();
 
             Username user = getMyFriendStates.getArgs0();
+            String nombre = user.getUsername();
 
             if (this.userID == null) {
                 states.setResult(false);
@@ -703,7 +701,7 @@ public class ETSIINFSocialSkeleton {
                     //User aux = new User();
                     //aux.setName(user.getUsername());
                     
-                    StatesList lista_estados = mapaEstados.get(user.getUsername());
+                    StatesList lista_estados = mapaEstados.get(nombre);
                     String [] mensajes = lista_estados.getStates();
                     int longitud = Math.min(mensajes.length, 10);
                     String [] last = new String[longitud];
