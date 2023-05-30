@@ -17,6 +17,7 @@ import org.apache.axis2.AxisFault;
 
 import es.upm.etsiinf.sos.model.xsd.FriendList;
 import es.upm.etsiinf.sos.model.xsd.Response;
+import es.upm.etsiinf.sos.model.xsd.StatesList;
 import es.upm.etsiinf.sos.model.xsd.User;
 import es.upm.etsiinf.sos.model.xsd.Username;
 import es.upm.fi.sos.t3.backend.UPMAuthenticationAuthorizationWSSkeletonSkeleton;
@@ -39,6 +40,8 @@ public class ETSIINFSocialSkeleton {
     private boolean adminLoggedIn = false;
     private static List<User> friends = new ArrayList<User>();
     FriendList friendsList = new FriendList();
+    StatesList estados = new StatesList();
+    Map<String,StatesList> mapaEstados = new HashMap<String,StatesList>();
     
     
     
@@ -64,7 +67,7 @@ public class ETSIINFSocialSkeleton {
         es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.UserBackEnd aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.UserBackEnd();
         aux.setName(username.getUsername());
         user.setUser(aux);
-
+        
         if (this.userID == null) {
             System.out.println("Por favor, inicia sesión para añadir usuarios.");
             responseFinal.setResponse(false);
@@ -207,6 +210,17 @@ public class ETSIINFSocialSkeleton {
 		System.out.println("========================= </List> =========================\n");
 	}
 
+    private void printStates() {
+		
+        String [] states = estados.getStates();
+		System.out.println("========================= <List> =========================");
+		for (int i = 0; i<states.length; i++) {
+			System.out.println("List entry [" + i + "] -> State description: " + states[i]);
+		}
+		System.out.println("========================= </List> =========================\n");
+	}
+
+
     private boolean isConnected (User user) {
 		boolean result = false;
 		for (User user1: connected) {
@@ -220,6 +234,9 @@ public class ETSIINFSocialSkeleton {
     private boolean isFriend (Username user) {
 		boolean result = false;
         String [] amigos = friendsList.getFriends();
+        if(amigos == null) {
+            return false;
+        }
 		for (int i = 0; i < friendsList.getFriends().length; i++) {
             if (amigos[i].equals(user.getUsername()))
             result = true;
@@ -587,18 +604,34 @@ public class ETSIINFSocialSkeleton {
     /**
      * Auto generated method signature
      * 
-     * @param getMyFriendStates
-     * @return getMyFriendStatesResponse
+     * @param publishState
+     * @return publishStateResponse
      */
 
-    public es.upm.etsiinf.sos.GetMyFriendStatesResponse getMyFriendStates(
-            es.upm.etsiinf.sos.GetMyFriendStates getMyFriendStates) {
-        // TODO : fill this with the necessary business logic
-        throw new java.lang.UnsupportedOperationException(
-                "Please implement " + this.getClass().getName() + "#getMyFriendStates");
-    }
+     public es.upm.etsiinf.sos.PublishStateResponse publishState(
+        es.upm.etsiinf.sos.PublishState publishState) {
+          
+            PublishStateResponse res = new PublishStateResponse();
+            Response res_aux = new Response();
 
-    
+            if (this.userID == null) {
+                res_aux.setResponse(false);
+                res.set_return(res_aux);
+                System.out.println("Debes iniciar sesión para publicar un estado.");
+                return res;
+            }
+            else {
+                String msg = publishState.getArgs0().getMessage();
+                estados.addStates(msg);
+                res_aux.setResponse(true);
+                res.set_return(res_aux);
+                mapaEstados.put(this.userID.getName(), estados);
+                System.out.println("El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
+                printStates();
+                System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
+                return res;
+            }
+    }
 
     /**
      * Auto generated method signature
@@ -607,32 +640,97 @@ public class ETSIINFSocialSkeleton {
      * @return getMyStatesResponse
      */
 
-    public es.upm.etsiinf.sos.GetMyStatesResponse getMyStates(
-            es.upm.etsiinf.sos.GetMyStates getMyStates) {
-        // TODO : fill this with the necessary business logic
-        throw new java.lang.UnsupportedOperationException(
-                "Please implement " + this.getClass().getName() + "#getMyStates");
-    }
+     public es.upm.etsiinf.sos.GetMyStatesResponse getMyStates(
+        es.upm.etsiinf.sos.GetMyStates getMyStates) {
+
+            GetMyStatesResponse res = new GetMyStatesResponse();
+            StatesList res_aux = new StatesList();
+            
+            if (this.userID == null) {
+                res_aux.setResult(false);
+                res_aux.setStates(new String [0]);
+                res.set_return(res_aux);
+                System.out.println("Debes iniciar sesión para obtener la lista de estados publicados.");
+                return res;
+            }
+            else {
+                String [] mensajes = estados.getStates();
+                int longitud = Math.min(mensajes.length, 10);
+                String [] last = new String[longitud];
+                for (int i = 0; i < longitud; i++) {
+                    last[i] = mensajes[mensajes.length - 1 - i];
+                }
+                res_aux.setResult(true);
+                res_aux.setStates(last);
+                res.set_return(res_aux);
+                System.out.println("Has obtenido los últimos 10 estados publicados con éxito.");
+                return res;
+            }
+}
 
     
-
-    
-
-    
-
     /**
      * Auto generated method signature
      * 
-     * @param publishState
-     * @return publishStateResponse
+     * @param getMyFriendStates
+     * @return getMyFriendStatesResponse
      */
 
-    public es.upm.etsiinf.sos.PublishStateResponse publishState(
-            es.upm.etsiinf.sos.PublishState publishState) {
-        // TODO : fill this with the necessary business logic
-        throw new java.lang.UnsupportedOperationException(
-                "Please implement " + this.getClass().getName() + "#publishState");
+    public es.upm.etsiinf.sos.GetMyFriendStatesResponse getMyFriendStates(
+            es.upm.etsiinf.sos.GetMyFriendStates getMyFriendStates) {
+        
+            GetMyFriendStatesResponse res = new GetMyFriendStatesResponse();
+            StatesList states = new StatesList();
+
+            Username user = getMyFriendStates.getArgs0();
+
+            if (this.userID == null) {
+                states.setResult(false);
+                states.setStates(new String[0]);
+                res.set_return(states);
+                System.out.println("Debes iniciar sesión para obtener la lista de estados publicados de tu amigo.");
+                return res;
+            }
+            else {
+                if (!isFriend(user)) {
+                    states.setResult(false);
+                    states.setStates(new String[0]);
+                    res.set_return(states);
+                    System.out.println("El usuario " + user.getUsername() + " no es tu amigo.");
+                    return res;
+                }
+                else {
+                    //User aux = new User();
+                    //aux.setName(user.getUsername());
+                    
+                    StatesList lista_estados = mapaEstados.get(user.getUsername());
+                    String [] mensajes = lista_estados.getStates();
+                    int longitud = Math.min(mensajes.length, 10);
+                    String [] last = new String[longitud];
+                    for (int i = 0; i < longitud; i++) {
+                        last[i] = mensajes[mensajes.length - 1 - i];
+                    }
+                    states.setResult(true);
+                    states.setStates(last);
+                    res.set_return(states);
+                    System.out.println("Has obtenido los últimos 10 estados publicados de tu amigo [" + user.getUsername() + "] con éxito.");
+                    return res;
+
+                }
+            }
     }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
