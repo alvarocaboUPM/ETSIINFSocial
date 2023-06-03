@@ -72,3 +72,11 @@ Para trabajar con la imagen de docker en un devcontainer:
 
 - Usuario admin 
 - Contraseña: admin
+
+
+3. Client Generation:
+
+ ```bash
+~/workspaces/ETSIINFSocial/soap-sos-client# $AXIS2_HOME/bin/wsdl2java.sh -uri ETSIINFSocial.wsdl -wv 2.0 -p es.upm.etsiinf.sos -d adb
+```
+   
