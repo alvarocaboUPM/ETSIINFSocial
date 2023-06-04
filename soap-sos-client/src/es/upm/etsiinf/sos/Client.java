@@ -127,21 +127,17 @@ public class Client {
 		//  --------------------------------------
 		operaciones[0] = new Ops(clientes[0]);
 		operaciones[0].login("admin", "admin");
-		operaciones[0].addUser("Carlos");
-		operaciones[0].addUser("Usema");
-		operaciones[0].addUser("Pablo");
-		operaciones[0].addUser("Alvaro");
+        operaciones[0].addUser("dummyass");
 		
-        //operaciones[0].login("Admin", "Admin");
 		//operaciones[0].login("admin", "admin");
-		//operaciones[0].login("pabloso", "pablitoclavounclabito2234");
-
+		operaciones[0].login("pabloso", "pablitoclavounclabito2234");
+		operaciones[0].login("asg", "ahadfsld");
        
                // ...
 	
 
         // Crear hilos para los clientes
-		
+		/* 
         Thread[] threads = new Thread[NumTest];
         for (int i = 0; i < NumTest; i++) {
             threads[i] = new ClientThread(i);
@@ -160,6 +156,7 @@ public class Client {
                 e.printStackTrace();
             }
         }
+		*/
 		
 	}
 	static boolean rootAccess;
@@ -174,9 +171,10 @@ public class Client {
 			System.out.println(" 	--------------------------------------");
 			System.out.printf("			cliente %d			  \n",thdID);
 			System.out.println(" 	--------------------------------------");
-			realizarOperacion(tmp);
+			realizarOperacion(1);
 			logged = tmp != 0;
 		//}
+	
     }
 
 
@@ -193,7 +191,7 @@ public class Client {
 				tmpUser = generarNombre();
 				tmpPass = generarContraseña();
 				rootAccess = tmpUser.equals("admin") && tmpPass.equals("admin");
-				operaciones[RanOp].login(tmpUser, tmpPass);
+				operaciones[RanOp].login("admin", "admin");
                 break;
 			case 2:{
 				String addingUser = generarNombre();
