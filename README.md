@@ -5,6 +5,8 @@ SOAP webservice emulating a social network using Java Axio2
 ## Autores
 
 [Álvaro Cabo Ciudad](https://github.com/alvarocabo)
+[Oussama El Hatifi]()
+[Pablo Fernandez]()
 
 ## TODO
 
@@ -60,6 +62,13 @@ Para trabajar con la imagen de docker en un devcontainer:
 
    $AXIS2_HOME/bin/wsdl2java.sh -s -ss -sd -wv 2.0 -p $PCK_NAME -d adb -uri $WSLD_URI
    ```
+  - Para la Generacion de los archivos relativos al cliente:
+
+      ``` bash
+      cd $CLIENT_NAME
+      $AXIS2_HOME/bin/wsdl2java.sh -uri ETSIINFSocial.wsdl -wv 2.0 -p es.upm.etsiinf.sos.ws -d adb 
+      cp $AXIS2_HOME/repository/modules/addressing-1.6.2.mar ./addressing.jar
+      ```
 
 ### Dev testing
 
