@@ -150,7 +150,7 @@ public class ETSIINFSocialSkeleton {
                     // El usuario admin no se gestiona a través del servicio UPMAuthenticationAuthorization
                     rootIsPresent = true;
                     this.userID = user_aux;
-                    response.setResponse(false);
+                    response.setResponse(true);
                     responseFinal.set_return(response);
                     System.out.println("¡Bienvenido admin, ha iniciado sesión con éxito!");
                     connected.add(user_aux);

@@ -55,14 +55,18 @@ RUN wget -q https://archive.apache.org/dist/axis/axis2/java/core/$AXIS2_VERSION/
 #ENV MAVEN_HOME /usr/share/maven
 ENV AXIS2_HOME /usr/share/axis2
 ENV CATALINA_HOME /usr/share/tomcat
-# Set enviroments variables for Axis2 WSLD2JAVA command
+# Set enviroments variables for Axis2 WSLD2JAVA comman
 ENV WSLD_USI porter.dia.fi.upm.es:8080/practica2223/ETSIINFSocial.wsdl
 ENV PKG_NAME es.upm.etsiinf.sos
 ENV PROJECT_NAME soap-sos-api
 ENV PROJECT_SOURCE /workspaces/ETSIINFSocial/soap-sos-api
 ENV PATH $AXIS2_HOME/bin:$PATH
+ENV CATALINA_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=localhost:8000,server=y,suspend=n"
+
 # Expose Tomcat port
 EXPOSE 8080
+# Debuging
+EXPOSE 8000
 
 #Enable tomcat as a service
 COPY docker/tomcat.service /etc/systemd/system/tomcat.service

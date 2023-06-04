@@ -18,5 +18,8 @@
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080]
+	"forwardPorts": [8080,8000],
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	  }
 }
