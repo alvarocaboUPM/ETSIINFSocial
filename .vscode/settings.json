@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "$AXIS2_HOME/lib/*.jar"
-    ]
+        "lib/*/.jar",
+        "/usr/share/axis2/lib/*.jar",
+        "/workspaces/ETSIINFSocial/soap-sos-client/addressing.jar",
+    ],
+    "maven.view": "flat"
 }

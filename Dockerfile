@@ -8,6 +8,17 @@ WORKDIR /app
 ENV ANT_VERSION 1.9.4
 ENV TOMCAT_VERSION 7.0.59
 ENV AXIS2_VERSION 1.6.2
+ENV MAVEN_VERSION 3.0.5
+ENV MAVEN_HOME /usr/share/maven
+# Install Maven
+
+RUN wget -q https://archive.apache.org/dist/maven/maven-3//$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz && \
+    tar -xzf apache-maven-$MAVEN_VERSION-bin.tar.gz && \
+    mv apache-maven-$MAVEN_VERSION /usr/share/maven && \
+    rm apache-maven-$MAVEN_VERSION-bin.tar.gz && \
+    ln -s $MAVEN_HOME/bin/maven /usr/bin/maven
+ENV PATH $MAVEN_HOME/bin:$PATH
+
 
 # Install Ant
 RUN wget -q https://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz && \
@@ -44,14 +55,18 @@ RUN wget -q https://archive.apache.org/dist/axis/axis2/java/core/$AXIS2_VERSION/
 #ENV MAVEN_HOME /usr/share/maven
 ENV AXIS2_HOME /usr/share/axis2
 ENV CATALINA_HOME /usr/share/tomcat
-# Set enviroments variables for Axis2 WSLD2JAVA command
+# Set enviroments variables for Axis2 WSLD2JAVA comman
 ENV WSLD_USI porter.dia.fi.upm.es:8080/practica2223/ETSIINFSocial.wsdl
 ENV PKG_NAME es.upm.etsiinf.sos
 ENV PROJECT_NAME soap-sos-api
 ENV PROJECT_SOURCE /workspaces/ETSIINFSocial/soap-sos-api
+ENV PATH $AXIS2_HOME/bin:$PATH
+ENV CATALINA_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=localhost:8000,server=y,suspend=n"
 
 # Expose Tomcat port
 EXPOSE 8080
+# Debuging
+EXPOSE 8000
 
 #Enable tomcat as a service
 COPY docker/tomcat.service /etc/systemd/system/tomcat.service
