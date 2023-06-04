@@ -18,6 +18,8 @@ public class testing {
         /*
          * PRUEBAS login
          */
+
+        
         Login prueba_login = new Login();
         User aux = new User();
         aux.setName("pabloso");

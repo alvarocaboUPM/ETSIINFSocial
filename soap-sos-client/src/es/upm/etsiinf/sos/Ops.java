@@ -1,133 +1,325 @@
 package es.upm.etsiinf.sos;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.*;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.PasswordPair;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.Login;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.User;
-import es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ExtensionMapper;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.FriendList;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PasswordPair;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Response;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.State;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.StatesList;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.User;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Username;
+import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse;
 import java.rmi.RemoteException;
+
+
 import org.apache.axis2.AxisFault;
 public class Ops {
+	
+	public static ETSIINFSocialStub StubClient;
+	static private FriendList amigos;
+	static private StatesList estados;
+	static  String usuario;
+	static  String contraseña;
+
+	public Ops(ETSIINFSocialStub StubClient){
+		this.StubClient = StubClient;
+		this.amigos = new FriendList();
+		this.estados = new StatesList();
+		this.usuario = "";
+		this.contraseña = "";
+	}
    
+	
+
 	//los usuarios deberán darse de alta en la red social ( _addUser_ ) e iniciar sesión ( _login_ )
-	static boolean addUser(ETSIINFSocialStub StubClient, String Username) {
+	static void addUser(String Username) {
 		AddUser UsTest = new AddUser();
 		Username param = new Username();
 		param.setUsername(Username);
+		usuario = Username;
 		UsTest.setArgs0(param);
 		AddUserResponseE UserResponse;
 		try {
-		
 			UserResponse = StubClient.addUser(UsTest);
-			//String pwd = UserResponse.get_return().getPwd();
-			//Password.put(Username, pwd);
-			return UserResponse.get_return().getResponse();
+			System.out.println("==================================================================================");
+			System.out.println("El Usuario " + param.getUsername() + (UserResponse.get_return().getResponse() ? " se ha dado de alta satisfactoriamente" : " no se ha dado de alta por algun error") + "\n");
+			System.out.println("==================================================================================\n");
 		} catch (RemoteException e) {
+			System.out.println("==================================================================================");
+			System.out.println("Error al añadir el usuario -> CONNECTION ERRROR! ");
 			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
 		}
 	}
 
-	static boolean login(ETSIINFSocialStub client, String userName, String userPwd) {
-		Login login1 = new Login();
-		User param = new User();
-		param.setName(userName);
-		param.setPwd(userPwd);
-		login1.setArgs0(param);
+	static void login(String Username, String UPass) {
+		Login login = new Login();
+		User user = new User();
+		user.setName(Username);
+		user.setPwd(UPass);
+		usuario = Username;
+		contraseña = UPass;
+		login.setArgs0(user);
+		LoginResponse logResponse;
 		try {
-			LoginResponse r = client.login(login1);
-			// System.out.println("SALIDA LOGIN ADMIN EN CLIENTE: " +
-			// r.get_return().getResponse());
-			return r.get_return().getResponse();
+			logResponse = StubClient.login(login);
+			System.out.println("==================================================================================\n");
+			System.out.println("El Usuario " + user.getName() 
+			+ (logResponse.get_return().getResponse() ? " ha iniciado session correctamente" : " no ha iniciado session correctamente") 
+			+ "\n");
+			System.out.println("==================================================================================\n");
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
+			System.out.println("Error al iniciar sesion -> CONNECTION ERROR! \n");
+			e.printStackTrace(); 
+			System.out.println("==================================================================================\n");
+		
 		}
 	}
 
 	
 	// El usuario deberá cerrar sesión ( _logout_ ) cuando no acceda a la red
-	static void logout(ETSIINFSocialStub StubClient) {
+	static void logout() {
 		Logout logout = new Logout();
 		try {
 			StubClient.logout(logout);
+			System.out.println("==================================================================================");
+			System.out.println( "Se ha cerrado sesion satisfactoriamente"); 
+			System.out.println("==================================================================================\n");
+
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			System.out.println("==================================================================================");
+			System.out.println( "Se ha producido un error al intentar cerrar sesion -> CONNECTION ERRROR! "); 
+
 			e.printStackTrace();
+			System.out.println("==================================================================================\n");
+
 
 		}
 	}
 
 	
 	//se podrá dar de baja en la red  ( _removeUser_ )
-	static boolean removeUser(ETSIINFSocialStub StubClient, String Username) {
+	static void removeUser(String Username) {
 		RemoveUser remove = new RemoveUser();
 		Username param = new Username();
 		param.setUsername(Username);
 		remove.setArgs0(param);
-		RemoveUserResponse r12;
+		RemoveUserResponse remRes;
 		try {
-			r12 = StubClient.removeUser(remove);
-			return r12.get_return().getResponse();
+			remRes = StubClient.removeUser(remove);
+			System.out.println("==================================================================================");
+			System.out.println(remRes.get_return().getResponse() ? "Se ha dado de baja correctamente al usuario: " :"Ha habido un problema al dar de baja al usuario: "  + param.getUsername());
+			System.out.println("==================================================================================\n");
+
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			System.out.println("==================================================================================");
+			System.out.println("Se ha producido un error al intentar dar de baja al usuario -> CONNECTION ERROR! ");
 			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
+
+			
 		}
 	}
 	
 	//changePassword (PasswordPair password)**
-	static boolean changePassword(ETSIINFSocialStub StubClient, String oldPwd, String newPwd) {
+	static void changePassword(String Oldpass, String Newpass) {
 		ChangePassword changePassword = new ChangePassword();
 		PasswordPair param = new PasswordPair();
-		param.setOldpwd(oldPwd);
-		param.setNewpwd(newPwd);
+		param.setOldpwd(Oldpass);
+		param.setNewpwd(Newpass);
 		changePassword.setArgs0(param);
-		ChangePasswordResponse r;
+		ChangePasswordResponse chgpasres;
 		try {
-			r = StubClient.changePassword(changePassword);
-			return r.get_return().getResponse();
+			chgpasres = StubClient.changePassword(changePassword);
+			System.out.println("==================================================================================");
+
+			System.out.println(chgpasres.get_return().getResponse() ? "Se ha cambiado la contraseña satisfactoriamente":"No se ha podido cambiar la contraseña  debido a un error");
+			System.out.println("==================================================================================\n");
+
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			System.out.println("==================================================================================");
+
+			System.out.println("Se ha producido un error al intentar cambiar la contraseña -> CONNECTION ERROR!");
 			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
+
+			
 		}
 
 	}
 
-	static boolean addFriend(ETSIINFSocialStub StubClient, String friend) {
+	static void addFriend(String friend) {
 		AddFriend addFriend = new AddFriend();
 		Username param = new Username();
 		param.setUsername(friend);
 		addFriend.setArgs0(param);
-		AddFriendResponse r;
+		AddFriendResponse addfrdres;
 		try {
-			r = StubClient.addFriend(addFriend);
-			return r.get_return().getResponse();
+			addfrdres = StubClient.addFriend(addFriend);
+			amigos.addFriends(friend); //TODO Check how to add!!
+			System.out.println("==================================================================================");
+
+			System.out.println("El usuario " + friend + (addfrdres.get_return().getResponse() ? " se ha añadido correctamente a la lista de amigo":" NO se ha podido añadir a la lista de amigos debido a un error"));
+			System.out.println("==================================================================================\n");
+		
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			System.out.println("==================================================================================");
+
+			System.out.println("Se ha producido un error al intentar añadir un amigo nuevo -> CONNECTION ERROR! ");
 			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
+
 		}
 
 	}
 
-	static boolean removeFriend(ETSIINFSocialStub StubClient, String friend) {
+	static void removeFriend(String friend) {
 
 		RemoveFriend remove_friend = new RemoveFriend();
 		Username Username = new Username();
 		Username.setUsername(friend);
 		remove_friend.setArgs0(Username);
-		RemoveFriendResponse r;
+		RemoveFriendResponse remfrdres;
 		try {
-			r = StubClient.removeFriend(remove_friend);
-			return r.get_return().getResponse();
+			remfrdres = StubClient.removeFriend(remove_friend);
+			System.out.println("==================================================================================");
+
+			System.out.println("El usuario " + friend + (remfrdres.get_return().getResponse() ? "se ha eliminado correctamente de tu lista de amigos":" no ha podido ser eliminado de tu lista de amigos debido a un error"));
+			System.out.println("==================================================================================\n");
+
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			System.out.println("==================================================================================");
+			System.out.println("Se ha producido un error al intentar eliminar un amigo -> CONNECTION ERROR! ");
 			e.printStackTrace();
-			return false;
+			System.out.println("==================================================================================\n");
+
 		}
 	}
 
+	static void getMyFriends() {
+		GetMyFriendsResponse getfrdsres;
+		GetMyFriends getfrds = new GetMyFriends();
+		
+		try {
+			getfrdsres  = new GetMyFriendsResponse();
+
+			System.out.println("==================================================================================");
+			System.out.println("Lista de amigos: \n " + StubClient.getMyFriends(getfrds));
+			System.out.println("==================================================================================\n");
+
+
+		} catch (RemoteException e) {
+			System.out.println("==================================================================================");
+
+			System.out.println("Se ha producido un error al intentar obtener la lista de amigos -> CONNECTION ERROR!");
+			e.printStackTrace();
+			System.out.println("==================================================================================");
+
+		}
+	}
+	static void publishState(String estado) {
+
+		PublishStateResponse pustres = new PublishStateResponse();
+		PublishState Pstate;
+		State stdo;
+		System.out.println("==================================================================================");
+		System.out.println("Añadiendo estado al sistema...");
+		try {
+			
+			Pstate = new PublishState();
+			stdo = new State();
+			stdo.setMessage(estado);
+			pustres = StubClient.publishState(Pstate);
+			estados.addStates(estado);//TODO check how to add a state!!!
+			System.out.println(pustres.get_return().getResponse() ? "Estado añadido correctamente":"ha habido un error al añadir el estado");
+			System.out.println("==================================================================================\n");
+
+
+		} catch (RemoteException e) {
+			System.out.println("==================================================================================");
+			System.out.println("Se ha producido un error al intentar añadir un estado -> CONNECTION ERROR! ");
+			e.printStackTrace();
+			System.out.println("==================================================================================\n");
+
+		}
+	}
+	static void getMyStates() {
+
+		GetMyStatesResponse gtstatsres = new GetMyStatesResponse();
+        GetMyStates gtstats = new GetMyStates();
+		try{
+		gtstatsres = StubClient.getMyStates(gtstats);
+        String [] estados = gtstatsres.get_return().getStates();
+		System.out.println("==================================================================================");
+        if(estados != null){
+		for (int i = 0; i < estados.length; i++) {
+            System.out.println("Estado " + i + " = " + estados[i]);
+        }
+		}else System.out.println("No hay estados que mostrar");
+		System.out.println("==================================================================================\n");
+
+		}catch (RemoteException e) {
+		System.out.println("==================================================================================");
+		e.printStackTrace();
+		System.out.println("==================================================================================");
+
+	}
+
+	}
+	static void getMyFriendStates(String user) {
+		GetMyFriendStatesResponse resgtfrdsst ;
+        GetMyFriendStates gtfrdsst;
+        Username Username ;
+        
+		try{
+			resgtfrdsst = new GetMyFriendStatesResponse();
+			gtfrdsst = new GetMyFriendStates();
+			Username = new Username();
+			Username.setUsername(user);
+			gtfrdsst.setArgs0(Username);
+			resgtfrdsst = StubClient.getMyFriendStates(gtfrdsst);
+        String [] estados_friends = resgtfrdsst.get_return().getStates();
+		int i = 0;
+		System.out.println("==================================================================================");
+		if(estados_friends != null){
+		for (String estado : estados_friends) {
+			System.out.println("Estado " + i + " = " + estado);
+			i++;
+			}
+		}else System.out.println("No hay estados disponibles");
+		System.out.println("==================================================================================\n");
+
+        System.out.println(resgtfrdsst.get_return().getResult());
+			
+		}catch (RemoteException e) {
+			System.out.println("==================================================================================");
+			e.printStackTrace();
+			System.out.println("==================================================================================\n");
+
+		}
+	}
 }

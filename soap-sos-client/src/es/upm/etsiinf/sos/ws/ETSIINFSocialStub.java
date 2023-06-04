@@ -5,7 +5,7 @@
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST)
  */
-        package es.upm.etsiinf.sos;
+        package es.upm.etsiinf.sos.ws;
 
         
 
@@ -252,16 +252,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#login
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#login
                      * @param login0
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse login(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse login(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.Login login0)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login login0)
                         
 
                     throws java.rmi.RemoteException
@@ -312,11 +312,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -374,15 +374,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startlogin
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startlogin
                     * @param login0
                 
                 */
                 public  void startlogin(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.Login login0,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login login0,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -426,10 +426,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultlogin(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorlogin(e);
@@ -521,16 +521,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#removeUser
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#removeUser
                      * @param removeUser2
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse removeUser(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse removeUser(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser removeUser2)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser removeUser2)
                         
 
                     throws java.rmi.RemoteException
@@ -581,11 +581,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -643,15 +643,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startremoveUser
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startremoveUser
                     * @param removeUser2
                 
                 */
                 public  void startremoveUser(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser removeUser2,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser removeUser2,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -695,10 +695,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultremoveUser(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorremoveUser(e);
@@ -790,16 +790,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#getMyFriendStates
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#getMyFriendStates
                      * @param getMyFriendStates4
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse getMyFriendStates(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse getMyFriendStates(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates getMyFriendStates4)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates getMyFriendStates4)
                         
 
                     throws java.rmi.RemoteException
@@ -850,11 +850,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -912,15 +912,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startgetMyFriendStates
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startgetMyFriendStates
                     * @param getMyFriendStates4
                 
                 */
                 public  void startgetMyFriendStates(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates getMyFriendStates4,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates getMyFriendStates4,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -964,10 +964,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetMyFriendStates(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetMyFriendStates(e);
@@ -1059,16 +1059,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#getMyFriends
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#getMyFriends
                      * @param getMyFriends6
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse getMyFriends(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse getMyFriends(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends getMyFriends6)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends getMyFriends6)
                         
 
                     throws java.rmi.RemoteException
@@ -1119,11 +1119,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1181,15 +1181,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startgetMyFriends
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startgetMyFriends
                     * @param getMyFriends6
                 
                 */
                 public  void startgetMyFriends(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends getMyFriends6,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends getMyFriends6,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -1233,10 +1233,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetMyFriends(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetMyFriends(e);
@@ -1328,16 +1328,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#changePassword
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#changePassword
                      * @param changePassword8
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse changePassword(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse changePassword(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword changePassword8)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword changePassword8)
                         
 
                     throws java.rmi.RemoteException
@@ -1388,11 +1388,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1450,15 +1450,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startchangePassword
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startchangePassword
                     * @param changePassword8
                 
                 */
                 public  void startchangePassword(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword changePassword8,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword changePassword8,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -1502,10 +1502,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultchangePassword(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorchangePassword(e);
@@ -1597,16 +1597,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#getMyStates
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#getMyStates
                      * @param getMyStates10
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse getMyStates(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse getMyStates(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates getMyStates10)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates getMyStates10)
                         
 
                     throws java.rmi.RemoteException
@@ -1657,11 +1657,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1719,15 +1719,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startgetMyStates
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startgetMyStates
                     * @param getMyStates10
                 
                 */
                 public  void startgetMyStates(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates getMyStates10,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates getMyStates10,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -1771,10 +1771,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetMyStates(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetMyStates(e);
@@ -1866,16 +1866,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#addFriend
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#addFriend
                      * @param addFriend12
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse addFriend(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse addFriend(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend addFriend12)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend addFriend12)
                         
 
                     throws java.rmi.RemoteException
@@ -1926,11 +1926,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -1988,15 +1988,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startaddFriend
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startaddFriend
                     * @param addFriend12
                 
                 */
                 public  void startaddFriend(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend addFriend12,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend addFriend12,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -2040,10 +2040,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultaddFriend(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErroraddFriend(e);
@@ -2138,7 +2138,7 @@
                   * 
                   */
                 public void  logout(
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.Logout logout14
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout logout14
 
                 ) throws java.rmi.RemoteException
                 
@@ -2191,16 +2191,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#publishState
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#publishState
                      * @param publishState15
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse publishState(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse publishState(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState publishState15)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState publishState15)
                         
 
                     throws java.rmi.RemoteException
@@ -2251,11 +2251,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -2313,15 +2313,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startpublishState
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startpublishState
                     * @param publishState15
                 
                 */
                 public  void startpublishState(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState publishState15,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState publishState15,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -2365,10 +2365,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultpublishState(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorpublishState(e);
@@ -2460,16 +2460,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#removeFriend
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#removeFriend
                      * @param removeFriend17
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse removeFriend(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse removeFriend(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend removeFriend17)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend removeFriend17)
                         
 
                     throws java.rmi.RemoteException
@@ -2520,11 +2520,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -2582,15 +2582,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startremoveFriend
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startremoveFriend
                     * @param removeFriend17
                 
                 */
                 public  void startremoveFriend(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend removeFriend17,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend removeFriend17,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -2634,10 +2634,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultremoveFriend(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorremoveFriend(e);
@@ -2729,16 +2729,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see es.upm.etsiinf.sos.ETSIINFSocial#addUser
+                     * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#addUser
                      * @param addUser19
                     
                      */
 
                     
 
-                            public  es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE addUser(
+                            public  es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE addUser(
 
-                            es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser addUser19)
+                            es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser addUser19)
                         
 
                     throws java.rmi.RemoteException
@@ -2789,11 +2789,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE.class,
+                                             es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE)object;
+                                        return (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -2851,15 +2851,15 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see es.upm.etsiinf.sos.ETSIINFSocial#startaddUser
+                * @see es.upm.etsiinf.sos.ws.ETSIINFSocial#startaddUser
                     * @param addUser19
                 
                 */
                 public  void startaddUser(
 
-                 es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser addUser19,
+                 es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser addUser19,
 
-                  final es.upm.etsiinf.sos.ETSIINFSocialCallbackHandler callback)
+                  final es.upm.etsiinf.sos.ws.ETSIINFSocialCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -2903,10 +2903,10 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE.class,
+                                                                         es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultaddUser(
-                                        (es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE)object);
+                                        (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErroraddUser(e);
@@ -16298,12 +16298,12 @@
         }
            
     
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.Login param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.Login.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16312,12 +16312,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16326,12 +16326,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16340,12 +16340,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16354,12 +16354,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16368,12 +16368,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16382,12 +16382,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16396,12 +16396,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16410,12 +16410,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16424,12 +16424,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16438,12 +16438,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16452,12 +16452,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16466,12 +16466,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16480,12 +16480,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16494,12 +16494,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.Logout param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.Logout.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16508,12 +16508,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16522,12 +16522,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16536,12 +16536,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16550,12 +16550,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16564,12 +16564,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16578,12 +16578,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE.MY_QNAME,
+                             return param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16593,14 +16593,14 @@
             }
         
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.Login param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.Login.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16614,14 +16614,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16635,14 +16635,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16656,14 +16656,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16677,14 +16677,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16698,14 +16698,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16719,14 +16719,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16740,14 +16740,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.Logout param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.Logout.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16761,14 +16761,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16782,14 +16782,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16803,14 +16803,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -16840,149 +16840,149 @@
 
         try {
         
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.Login.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.Login.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.LoginResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUser.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveUserResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStates.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendStatesResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriends.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyFriendsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePassword.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.ChangePasswordResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStates.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.GetMyStatesResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriend.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.AddFriendResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.Logout.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.Logout.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.PublishState.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.PublishStateResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriend.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.RemoveFriendResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.AddUser.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE.class.equals(type)){
+                if (es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE.class.equals(type)){
                 
-                           return es.upm.etsiinf.sos.ETSIINFSocialStub.AddUserResponseE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
