@@ -5,11 +5,9 @@ import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponse;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ExtensionMapper;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.FriendList;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse;
@@ -24,36 +22,31 @@ import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Response;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.State;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.StatesList;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.User;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Username;
 import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse;
 import java.rmi.RemoteException;
-
-
-import org.apache.axis2.AxisFault;
 public class Ops {
 	
-	public static ETSIINFSocialStub StubClient;
-	static private FriendList amigos;
-	static private StatesList estados;
-	static  String usuario;
-	static  String contraseña;
+	public ETSIINFSocialStub StubClient;
+	private FriendList amigos;
+	private StatesList estados;
+	String usuario;
+	String contraseña;
 
-	public Ops(ETSIINFSocialStub StubClient){
-		this.StubClient = StubClient;
-		this.amigos = new FriendList();
-		this.estados = new StatesList();
-		this.usuario = "";
-		this.contraseña = "";
+	public Ops(ETSIINFSocialStub StubClientIn){
+		StubClient = StubClientIn;
+		amigos = new FriendList();
+		estados = new StatesList();
+		usuario = "admin";
+		contraseña = "admin";
 	}
    
-	
 
 	//los usuarios deberán darse de alta en la red social ( _addUser_ ) e iniciar sesión ( _login_ )
-	static void addUser(String Username) {
+	public void addUser(String Username) {
 		AddUser UsTest = new AddUser();
 		Username param = new Username();
 		param.setUsername(Username);
@@ -74,7 +67,7 @@ public class Ops {
 		}
 	}
 
-	static void login(String Username, String UPass) {
+	public void login(String Username, String UPass) {
 		Login login = new Login();
 		User user = new User();
 		user.setName(Username);
@@ -87,23 +80,21 @@ public class Ops {
 			logResponse = StubClient.login(login);
 			System.out.println("==================================================================================\n");
 			System.out.println("El Usuario " + user.getName() 
-			+ (logResponse.get_return().getResponse() ? " ha iniciado session correctamente" : " no ha iniciado session correctamente") 
+			+ (logResponse.get_return().getResponse() ? " ha iniciado sesion correctamente" : " no ha iniciado session correctamente") 
 			+ "\n");
 			System.out.println("==================================================================================\n");
 			
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			System.out.println("==================================================================================\n");
 			System.out.println("Error al iniciar sesion -> CONNECTION ERROR! \n");
 			e.printStackTrace(); 
 			System.out.println("==================================================================================\n");
-		
 		}
 	}
 
 	
 	// El usuario deberá cerrar sesión ( _logout_ ) cuando no acceda a la red
-	static void logout() {
+	public void logout() {
 		Logout logout = new Logout();
 		try {
 			StubClient.logout(logout);
@@ -124,7 +115,8 @@ public class Ops {
 
 	
 	//se podrá dar de baja en la red  ( _removeUser_ )
-	static void removeUser(String Username) {
+	public void removeUser(String Username) {
+		login(Username, Username);
 		RemoveUser remove = new RemoveUser();
 		Username param = new Username();
 		param.setUsername(Username);
@@ -147,7 +139,7 @@ public class Ops {
 	}
 	
 	//changePassword (PasswordPair password)**
-	static void changePassword(String Oldpass, String Newpass) {
+	public void changePassword(String Oldpass, String Newpass) {
 		ChangePassword changePassword = new ChangePassword();
 		PasswordPair param = new PasswordPair();
 		param.setOldpwd(Oldpass);
@@ -173,7 +165,7 @@ public class Ops {
 
 	}
 
-	static void addFriend(String friend) {
+	public void addFriend(String friend) {
 		AddFriend addFriend = new AddFriend();
 		Username param = new Username();
 		param.setUsername(friend);
@@ -198,7 +190,7 @@ public class Ops {
 
 	}
 
-	static void removeFriend(String friend) {
+	public void removeFriend(String friend) {
 
 		RemoveFriend remove_friend = new RemoveFriend();
 		Username Username = new Username();
@@ -221,19 +213,28 @@ public class Ops {
 		}
 	}
 
-	static void getMyFriends() {
-		GetMyFriendsResponse getfrdsres;
+	public void getMyFriends() {
 		GetMyFriends getfrds = new GetMyFriends();
 		
 		try {
-			getfrdsres  = new GetMyFriendsResponse();
-
 			System.out.println("==================================================================================");
-			System.out.println("Lista de amigos: \n " + StubClient.getMyFriends(getfrds));
+			System.out.println("Lista de amigos: \n ");
+			GetMyFriendsResponse r = StubClient.getMyFriends(getfrds);
+			FriendList list = r.get_return();
+			for (String f : list.getFriends()) {
+					System.out.println(f+"\n");
+			}
 			System.out.println("==================================================================================\n");
 
 
-		} catch (RemoteException e) {
+		} 
+		catch (NullPointerException e1){
+
+			System.out.println("==================================================================================");
+			System.out.println("No existe la lista de amigos");
+			System.out.println("==================================================================================");
+		}
+		catch (RemoteException e) {
 			System.out.println("==================================================================================");
 
 			System.out.println("Se ha producido un error al intentar obtener la lista de amigos -> CONNECTION ERROR!");
@@ -242,7 +243,7 @@ public class Ops {
 
 		}
 	}
-	static void publishState(String estado) {
+	public void publishState(String estado) {
 
 		PublishStateResponse pustres = new PublishStateResponse();
 		PublishState Pstate;
@@ -268,7 +269,7 @@ public class Ops {
 
 		}
 	}
-	static void getMyStates() {
+	public void getMyStates() {
 
 		GetMyStatesResponse gtstatsres = new GetMyStatesResponse();
         GetMyStates gtstats = new GetMyStates();
@@ -291,7 +292,7 @@ public class Ops {
 	}
 
 	}
-	static void getMyFriendStates(String user) {
+	public void getMyFriendStates(String user) {
 		GetMyFriendStatesResponse resgtfrdsst ;
         GetMyFriendStates gtfrdsst;
         Username Username ;
