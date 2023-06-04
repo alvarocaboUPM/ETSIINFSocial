@@ -62,6 +62,7 @@ public class Ops {
 		AddUserResponseE UserResponse;
 		try {
 			UserResponse = StubClient.addUser(UsTest);
+			System.out.println("CONTRASEÑA: " +UserResponse.get_return().getPwd());
 			System.out.println("==================================================================================");
 			System.out.println("El Usuario " + param.getUsername() + (UserResponse.get_return().getResponse() ? " se ha dado de alta satisfactoriamente" : " no se ha dado de alta por algun error") + "\n");
 			System.out.println("==================================================================================\n");

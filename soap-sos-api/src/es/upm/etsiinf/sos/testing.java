@@ -22,7 +22,7 @@ public class testing {
         
         Login prueba_login = new Login();
         User aux = new User();
-        aux.setName("pabloso");
+        aux.setName("admin");
         aux.setPwd("pablitoclavounclabito2234");
         prueba_login.setArgs0(aux);
         System.out.println("\n");
@@ -31,8 +31,8 @@ public class testing {
         System.out.println("-------------------------------------------------------------");
         User adm = new User();
         Login prueba_login2 = new Login();
-        adm.setName("admin");
-        adm.setPwd("admin");
+        adm.setName("tuputamadre");
+        adm.setPwd("tuputamadre1158");
         prueba_login2.setArgs0(adm);
         skeleton2.login(prueba_login2);
 
@@ -51,10 +51,10 @@ public class testing {
          */
         es.upm.etsiinf.sos.AddUser user1 = new AddUser();
         Username prueba = new Username();
-        prueba.setUsername("Laura");
+        prueba.setUsername("tuputamadre");
         user1.setArgs0(prueba);
         System.out.println("\n");
-        //skeleton.addUser(user1);
+        skeleton.addUser(user1);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
 
