@@ -177,7 +177,7 @@ public class Client {
 	
     }
 
-
+ 
 
     private static void realizarOperacion(int tipoOperacion) throws RemoteException {
 		String tmpUser, tmpPass;
