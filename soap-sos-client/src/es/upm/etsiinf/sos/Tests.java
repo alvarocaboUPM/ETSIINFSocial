@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Tests {
-	static boolean rootAccess;
+	static boolean rootAccess = false;
 	static Random random = new Random();
 	static HashMap<Integer, String> caseMap = new HashMap<>();
 	
@@ -92,8 +92,8 @@ public class Tests {
 				tmpUser = generarNombre();
 				tmpPass = generarContraseña();
 				rootAccess = tmpUser.equals("admin") && tmpPass.equals("admin");
-				op.login("admin", "admin");
 				rootAccess = true;
+				op.login("admin", "admin");
 				break;
 			case 1:
 				String addingUser = generarNombre();
@@ -119,7 +119,7 @@ public class Tests {
 				// System.out.println("Password: " + tmpPass);
 
 				// if (tmpUser.equals("admin") && tmpPass.equals("admin")) {
-				// 	op.login(tmpUser, tmpPass);
+				// 	
 				// 	
 				// } else
 				// 	System.out.println("Error al Iniciar sesion como Administrador");

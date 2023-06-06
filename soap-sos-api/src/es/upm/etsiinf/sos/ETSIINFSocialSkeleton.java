@@ -179,7 +179,7 @@ public class ETSIINFSocialSkeleton {
         return responseFinal;
     }
 
-
+    @SuppressWarnings("unused")
     private void printListConnected() {
         int i = 0;
         System.out.println("========================= <List> =========================");

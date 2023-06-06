@@ -58,10 +58,10 @@ public class Ops {
 		try {
 			logResponse = StubClient.login(login);
 
-			System.out.println((logResponse.get_return().getResponse()
-			? "\033[32m[OK]: \033[0m El usuario " + user.getName() + " ha iniciado sesion correctamente"
-			: "\033[31m[ERROR]: \033[0m El usuario " + user.getName()
-			+ " NO ha iniciado sesion correctamente\n"));
+			// System.out.println((logResponse.get_return().getResponse()
+			// ? "\033[32m[OK]: \033[0m El usuario " + user.getName() + " ha iniciado sesion correctamente"
+			// : "\033[31m[ERROR]: \033[0m El usuario " + user.getName()
+			// + " NO ha iniciado sesion correctamente\n"));
 
 		} catch (RemoteException e) {
 			System.out.print("\n[\033[31m[ERROR]: \033[0m]: ");
@@ -76,8 +76,8 @@ public class Ops {
 		Logout logout = new Logout();
 		try {
 			StubClient.logout(logout);
-			System.out.print("\n\033[32m[OK]: \033[0m ");
-			System.out.println("Se ha cerrado sesion satisfactoriamente");
+			// System.out.print("\n\033[32m[OK]: \033[0m ");
+			// System.out.println("Se ha cerrado sesion satisfactoriamente");
 
 		} catch (RemoteException e) {
 			System.out.print("\n\033[31m[ERROR]: \033[0m ");
@@ -101,8 +101,8 @@ public class Ops {
 			UserResponse = StubClient.addUser(UsTest);
 
 			System.out.println((UserResponse.get_return().getResponse()
-					? "\033[32m[OK]: \033[0m El usuario" + Username + " se ha dado de alta"
-					: "\033[31m[ERROR]: \033[0m ha habido un error dando de alta al usuario \n"));
+					? "\033[32m[OK]: \033[0m El usuario " + Username + " se ha dado de alta"
+					: "\033[31m[ERROR]: \033[0m Ha habido un error dando de alta al usuario "+Username+" \n"));
 
 		} catch (RemoteException e) {
 			System.out.print("\n\033[31m[ERROR]: \033[0m ");
@@ -285,8 +285,10 @@ public class Ops {
 			resgtfrdsst = StubClient.getMyFriendStates(gtfrdsst);
 			String[] estados_friends = resgtfrdsst.get_return().getStates();
 			int i = 0;
-			if (estados_friends == null)
+			if (estados_friends == null){
 				System.out.println("\n\033[31m[ERROR]: \033[0m No hay estados disponibles");
+				return ;
+			}
 			System.out.println("\n\033[32m[OK]: \033[0m ");
 			for (String estado : estados_friends) {
 				System.out.println("Estado " + i + " = " + estado);
