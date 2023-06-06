@@ -78,9 +78,9 @@ public class Tests {
 
 	public static void realizarOperacionesAleatorias(int thdID, Ops op) throws RemoteException {
 		rootAccess = false;
-		System.out.println(" 	--------------------------------------");
-		System.out.printf("		running: '%s'			  \n", caseMap.get(thdID));
-		System.out.println(" 	--------------------------------------");
+		System.out.println("\n---------------------------------------------------");
+		System.out.printf("\t running: '%s'\n", caseMap.get(thdID));
+		System.out.println("---------------------------------------------------");
 		realizarOperacion(thdID, op);
 	}
 
@@ -89,7 +89,6 @@ public class Tests {
 
 		switch (tipoOperacion) {
 			case 0:
-				System.out.println("Loging in");
 				tmpUser = generarNombre();
 				tmpPass = generarContraseña();
 				rootAccess = tmpUser.equals("admin") && tmpPass.equals("admin");
@@ -97,73 +96,72 @@ public class Tests {
 				rootAccess = true;
 				break;
 			case 1:
-				System.out.println("Adding user");
 				String addingUser = generarNombre();
 				if (rootAccess) {
 					op.addUser(addingUser);
 					break;
 				}
 
-				System.out.println("Accion reservada para el usuario Administrador");
-				System.out.print("¿Iniciar Sesion Como Administrador? (yes/no): ");
+				// System.out.println("Accion reservada para el usuario Administrador");
+				// System.out.print("¿Iniciar Sesion Como Administrador? (yes/no): ");
 
-				boolean randomDecision = random.nextInt(2) == 1;
-				System.out.print(randomDecision ? "yes\n" : "no\n");
-				if (!randomDecision) {
-					System.out.println("Cancelando operacion...");
-					break;
-				}
+				// boolean randomDecision = random.nextInt(2) == 1;
+				// System.out.print(randomDecision ? "yes\n" : "no\n");
+				// if (!randomDecision) {
+				// 	System.out.println("Cancelando operacion...");
+				// 	break;
+				// }
 
-				System.out.println("Introduce las credenciales del Administrador:\n");
-				tmpUser = generarNombre();
-				tmpPass = generarContraseña();
-				System.out.println("User: " + tmpUser);
-				System.out.println("Password: " + tmpPass);
+				// System.out.println("Introduce las credenciales del Administrador:\n");
+				// tmpUser = generarNombre();
+				// tmpPass = generarContraseña();
+				// System.out.println("User: " + tmpUser);
+				// System.out.println("Password: " + tmpPass);
 
-				if (tmpUser.equals("admin") && tmpPass.equals("admin")) {
-					op.login(tmpUser, tmpPass);
-					op.addUser(addingUser);
-				} else
-					System.out.println("Error al Iniciar sesion como Administrador");
-
+				// if (tmpUser.equals("admin") && tmpPass.equals("admin")) {
+				// 	op.login(tmpUser, tmpPass);
+				// 	
+				// } else
+				// 	System.out.println("Error al Iniciar sesion como Administrador");
+				op.addUser(addingUser);
 				break;
 			case 2:
 				String username = generarNombre();
-				System.out.println("Removing user" + username);
+
 				op.removeUser(username);
 				break;
 			case 3:
-				System.out.println("Chaning user password");
+
 
 				op.changePassword(op.contraseña,
 						generarContraseña());
 				break;
 			case 4:
-				System.out.println("Adding a friend");
+
 				op.addFriend(generarNombre());
 				break;
 			case 5:
-				System.out.println("Getting friends list");
+
 				op.getMyFriends();
 				break;
 			case 6:
-				System.out.println("Removing a friend state");
+
 				op.removeFriend(generarNombre());
 				break;
 			case 7:
-				System.out.println("Publishing state");
+
 				op.publishState(generarEstado());
 				break;
 			case 8:
-				System.out.println("Getting states list");
+
 				op.getMyStates();
 				break;
 			case 9:
-				System.out.println("Getting my friends states list");
+
 				op.getMyFriendStates(op.usuario);
 				break;
 			case 10:
-				System.out.println("Loging out");
+
 				op.logout();
 				break;
 			default:

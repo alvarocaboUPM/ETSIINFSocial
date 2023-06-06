@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 public class Client {
 
-	static final int NumTest = 11;
+	static final int NumTest = 10;
 	static ETSIINFSocialStub[] clientes;
 
 	public static void main(String[] args) throws RemoteException {
@@ -48,6 +48,7 @@ public class Client {
 			try {
 				op.login("admin", "admin");
 				Tests.realizarOperacionesAleatorias(id, op);
+				op.logout();
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}

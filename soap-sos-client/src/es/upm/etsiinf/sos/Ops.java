@@ -46,30 +46,6 @@ public class Ops {
 		contraseña = "admin";
 	}
 
-	// los usuarios deberán darse de alta en la red social ( _addUser_ ) e iniciar
-	// sesión ( _login_ )
-	public void addUser(String Username) {
-		AddUser UsTest = new AddUser();
-		Username param = new Username();
-		param.setUsername(Username);
-		usuario = Username;
-		UsTest.setArgs0(param);
-		AddUserResponseE UserResponse;
-		try {
-			UserResponse = StubClient.addUser(UsTest);
-			System.out.println("CONTRASEÑA: " + UserResponse.get_return().getPwd());
-			System.out.println((UserResponse.get_return().getResponse()
-					? "\033[32m[OK]: \033[0m El usuario se ha dado de alta"
-					: "\033[31m[ERROR]: \033[0m ha habido un error dando de alta al usuario \n"));
-
-		} catch (RemoteException e) {
-			System.out.print("\n\033[31m[ERROR]: \033[0m ");
-			System.out.println("Error al añadir el usuario -> CONNECTION ERRROR! ");
-			e.printStackTrace();
-
-		}
-	}
-
 	public void login(String Username, String UPass) {
 		Login login = new Login();
 		User user = new User();
@@ -83,9 +59,9 @@ public class Ops {
 			logResponse = StubClient.login(login);
 
 			System.out.println((logResponse.get_return().getResponse()
-					? "\033[32m[OK]: \033[0m El usuario " + user.getName() + " ha iniciado sesion correctamente"
-					: "\033[31m[ERROR]: \033[0m El usuario " + user.getName()
-							+ " NO ha iniciado sesion correctamente\n"));
+			? "\033[32m[OK]: \033[0m El usuario " + user.getName() + " ha iniciado sesion correctamente"
+			: "\033[31m[ERROR]: \033[0m El usuario " + user.getName()
+			+ " NO ha iniciado sesion correctamente\n"));
 
 		} catch (RemoteException e) {
 			System.out.print("\n[\033[31m[ERROR]: \033[0m]: ");
@@ -107,6 +83,30 @@ public class Ops {
 			System.out.print("\n\033[31m[ERROR]: \033[0m ");
 			System.out.println("Se ha producido un error al intentar cerrar sesion -> CONNECTION ERRROR! ");
 
+			e.printStackTrace();
+
+		}
+	}
+
+	// los usuarios deberán darse de alta en la red social ( _addUser_ ) e iniciar
+	// sesión ( _login_ )
+	public void addUser(String Username) {
+		AddUser UsTest = new AddUser();
+		Username param = new Username();
+		param.setUsername(Username);
+		usuario = Username;
+		UsTest.setArgs0(param);
+		AddUserResponseE UserResponse;
+		try {
+			UserResponse = StubClient.addUser(UsTest);
+
+			System.out.println((UserResponse.get_return().getResponse()
+					? "\033[32m[OK]: \033[0m El usuario" + Username + " se ha dado de alta"
+					: "\033[31m[ERROR]: \033[0m ha habido un error dando de alta al usuario \n"));
+
+		} catch (RemoteException e) {
+			System.out.print("\n\033[31m[ERROR]: \033[0m ");
+			System.out.println("Error al añadir el usuario -> CONNECTION ERRROR! ");
 			e.printStackTrace();
 
 		}
@@ -196,8 +196,8 @@ public class Ops {
 		RemoveFriendResponse remfrdres;
 		try {
 			remfrdres = StubClient.removeFriend(remove_friend);
-			System.out.print("\033[34m[DEBUG]: \033[0m ");
-			System.out.println("El usuario " + friend +
+
+			System.out.println(
 					(remfrdres.get_return().getResponse()
 							? "\033[32m[OK]: \033[0m El usuario " + friend
 									+ " se ha eliminado correctamente de tu lista de amigos"
@@ -213,7 +213,7 @@ public class Ops {
 	public void getMyFriends() {
 		GetMyFriends getfrds = new GetMyFriends();
 		try {
-			System.out.print("\033[34m[DEBUG]: \033[0m ");
+			System.out.print("\n\033[34m[DEBUG]: \033[0m ");
 			System.out.println("Lista de amigos: \n ");
 			GetMyFriendsResponse r = StubClient.getMyFriends(getfrds);
 			FriendList list = r.get_return();
@@ -228,7 +228,6 @@ public class Ops {
 			System.out.println(
 					"Se ha producido un error al intentar obtener la lista de amigos -> CONNECTION ERROR: \033[0m");
 			e.printStackTrace();
-			System.out.print("\n\033[31m[ERROR]: \033[0m ");
 		}
 	}
 
@@ -236,14 +235,14 @@ public class Ops {
 		PublishStateResponse pustres = new PublishStateResponse();
 		PublishState Pstate;
 		State stdo;
-		System.out.print("\033[34m[DEBUG]: \033[0m ");
+		System.out.print("\n\033[34m[DEBUG]: \033[0m ");
 		System.out.println("Añadiendo estado al sistema...");
 		try {
 			Pstate = new PublishState();
 			stdo = new State();
 			stdo.setMessage(estado);
 			pustres = StubClient.publishState(Pstate);
-			estados.addStates(estado); // TODO check how to add a state!!!
+			estados.addStates(estado);
 			System.out.println(pustres.get_return().getResponse() ? "Estado añadido correctamente"
 					: "Ha habido un error al añadir el estado");
 		} catch (RemoteException e) {
@@ -286,16 +285,14 @@ public class Ops {
 			resgtfrdsst = StubClient.getMyFriendStates(gtfrdsst);
 			String[] estados_friends = resgtfrdsst.get_return().getStates();
 			int i = 0;
-			if (estados_friends != null) {
-				System.out.println("\n\033[32m[OK]: \033[0m ");
-				for (String estado : estados_friends) {
-					System.out.println("Estado " + i + " = " + estado);
-					i++;
-				}
-			} else {
-				System.out.println("No hay estados disponibles");
+			if (estados_friends == null)
+				System.out.println("\n\033[31m[ERROR]: \033[0m No hay estados disponibles");
+			System.out.println("\n\033[32m[OK]: \033[0m ");
+			for (String estado : estados_friends) {
+				System.out.println("Estado " + i + " = " + estado);
+				i++;
 			}
-			System.out.println(resgtfrdsst.get_return().getResult());
+
 		} catch (RemoteException e) {
 			System.out.print("\n\033[31m[ERROR]: \033[0m ");
 			e.printStackTrace();
