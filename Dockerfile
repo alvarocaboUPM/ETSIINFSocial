@@ -61,12 +61,7 @@ ENV PKG_NAME es.upm.etsiinf.sos
 ENV PROJECT_NAME soap-sos-api
 ENV PROJECT_SOURCE /workspaces/ETSIINFSocial/soap-sos-api
 ENV PATH $AXIS2_HOME/bin:$PATH
-ENV CATALINA_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=localhost:8000,server=y,suspend=n"
-
-# Expose Tomcat port
-EXPOSE 8080
-# Debuging
-EXPOSE 8000
+ENV CATALINA_OPTS "-Xdebug -Xrunjdwp:transport=dt_socket,address=localhost:8000,server=y,suspend=n"
 
 #Enable tomcat as a service
 COPY docker/tomcat.service /etc/systemd/system/tomcat.service
