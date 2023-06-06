@@ -3,4 +3,6 @@ lib
 /target/
 /bin/
 
+soap-sos-api/build/classes/META-INF
+
 *.class

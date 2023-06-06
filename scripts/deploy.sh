@@ -1,10 +1,6 @@
 #!/bin/bash
 
-#      DEPLOY SCRIPT FOR TOMCAT SOAP APIs   #
-#              by Álvaro Cabo               #
-
 cd $PROJECT_SOURCE
-
 
 tomcat-down
 ant && echo -e "\e[36mBuild completed!\e[0m"

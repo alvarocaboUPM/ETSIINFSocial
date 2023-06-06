@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "testing",
+            "request": "launch",
+            "mainClass": "es.upm.etsiinf.sos.testing",
+            "projectName": "ETSIINFSocial_1525e47"
+        },
+        {
+            "type": "java",
             "name": "Client",
             "request": "launch",
             "mainClass": "es.upm.etsiinf.sos.Client",
