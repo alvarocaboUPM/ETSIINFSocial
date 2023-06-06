@@ -78,6 +78,7 @@ public class Ops {
 		LoginResponse logResponse;
 		try {
 			logResponse = StubClient.login(login);
+			
 			System.out.println("==================================================================================\n");
 			System.out.println("El Usuario " + user.getName() 
 			+ (logResponse.get_return().getResponse() ? " ha iniciado sesion correctamente" : " no ha iniciado session correctamente") 
