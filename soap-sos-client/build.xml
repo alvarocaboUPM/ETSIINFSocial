@@ -8,7 +8,7 @@
     <property name="name" value="ETSIINFSocial"/>
     <property name="src" value="${project.base.dir}/src"/>
     <property name="test" value="${project.base.dir}/test"/>
-    <property name="build" value="${project.base.dir}/build"/>
+    <property name="build" value="${project.base.dir}/target"/>
     <property name="classes" value="${build}/classes"/>
     <property name="lib" value="${build}/lib"/>
     <property name="resources" value="${project.base.dir}/resources"/>
@@ -16,6 +16,7 @@
     <path id="axis2.class.path">
         <pathelement path="${java.class.path}"/>
         <pathelement path="${maven.class.path}"/>
+        <pathelement location="${resources}/adressing.jar"/> 
         <fileset dir="${axis2.home}">
             <include name="lib/*.jar"/>
         </fileset>
@@ -40,7 +41,7 @@
         <echo message="Axis2 Availability= ${axis2.available}"/>
     </target>
     <target depends="pre.compile.test" name="compile.src" if="jars.ok">
-        <javac debug="on" memoryMaximumSize="256m" memoryInitialSize="256m" fork="true" destdir="${classes}" srcdir="${src}">
+        <javac debug="on" includeantruntime="false" memoryMaximumSize="256m" memoryInitialSize="256m" fork="true" destdir="${classes}" srcdir="${src}">
             <classpath refid="axis2.class.path"/>
         </javac>
     </target>
