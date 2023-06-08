@@ -1,4 +1,4 @@
-package es.upm.etsiinf.sos;
+package main.es.upm.etsiinf.sos;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;

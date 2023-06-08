@@ -102,19 +102,6 @@ public class ETSIINFSocialSkeleton {
                 user1.getPwd().equals(user2.getPwd()));
     }
 
-    @SuppressWarnings("unused")
-    private void printMap() {
-        int i = 0;
-        System.out.println("========================= <HashMap> =========================");
-        for (String name : users.keySet()) {
-            String key = name.toString();
-            String value = users.get(key).getName();
-            String pwd = users.get(key).getPwd();
-            System.out.println("Map entry [" + i + "] -> Username: " + key + "| Name: " + value + "| Password: " + pwd);
-            i += 1;
-        }
-        System.out.println("========================= </HashMap> =========================\n");
-    }
 
     /**
      * Auto generated method signature
@@ -179,38 +166,6 @@ public class ETSIINFSocialSkeleton {
         return responseFinal;
     }
 
-    @SuppressWarnings("unused")
-    private void printListConnected() {
-        int i = 0;
-        System.out.println("========================= <List> =========================");
-        for (User value : connected) {
-            String name = value.getName();
-            String pwd = value.getPwd();
-            System.out.println("List entry [" + i + "] -> Name: " + name + "| Password: " + pwd);
-            i += 1;
-        }
-        System.out.println("========================= </List> =========================\n");
-    }
-
-    private void printListFriends() {
-
-        String[] amigos = friendsList.getFriends();
-        System.out.println("========================= <List> =========================");
-        for (int i = 0; i < amigos.length; i++) {
-            System.out.println("List entry [" + i + "] -> Name: " + amigos[i]);
-        }
-        System.out.println("========================= </List> =========================\n");
-    }
-
-    private void printStates() {
-
-        String[] states = estados.getStates();
-        System.out.println("========================= <List> =========================");
-        for (int i = 0; i < states.length; i++) {
-            System.out.println("List entry [" + i + "] -> State description: " + states[i]);
-        }
-        System.out.println("========================= </List> =========================\n");
-    }
 
     private boolean isConnected(User user) {
         for (User user1 : connected) {
@@ -696,4 +651,52 @@ public class ETSIINFSocialSkeleton {
         }
     }
 
+    /* DEBUG METHODS*/
+    
+    @SuppressWarnings("unused")
+    private void printListConnected() {
+        int i = 0;
+        System.out.println("========================= <List> =========================");
+        for (User value : connected) {
+            String name = value.getName();
+            String pwd = value.getPwd();
+            System.out.println("List entry [" + i + "] -> Name: " + name + "| Password: " + pwd);
+            i += 1;
+        }
+        System.out.println("========================= </List> =========================\n");
+    }
+
+    @SuppressWarnings("unused")
+    private void printMap() {
+        int i = 0;
+        System.out.println("========================= <HashMap> =========================");
+        for (String name : users.keySet()) {
+            String key = name.toString();
+            String value = users.get(key).getName();
+            String pwd = users.get(key).getPwd();
+            System.out.println("Map entry [" + i + "] -> Username: " + key + "| Name: " + value + "| Password: " + pwd);
+            i += 1;
+        }
+        System.out.println("========================= </HashMap> =========================\n");
+    }
+
+    private void printListFriends() {
+
+        String[] amigos = friendsList.getFriends();
+        System.out.println("========================= <List> =========================");
+        for (int i = 0; i < amigos.length; i++) {
+            System.out.println("List entry [" + i + "] -> Name: " + amigos[i]);
+        }
+        System.out.println("========================= </List> =========================\n");
+    }
+
+    private void printStates() {
+
+        String[] states = estados.getStates();
+        System.out.println("========================= <List> =========================");
+        for (int i = 0; i < states.length; i++) {
+            System.out.println("List entry [" + i + "] -> State description: " + states[i]);
+        }
+        System.out.println("========================= </List> =========================\n");
+    }
 }

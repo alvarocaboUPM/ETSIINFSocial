@@ -1,7 +1,8 @@
-package es.upm.etsiinf.sos;
+package main.es.upm.etsiinf.sos;
 
-import es.upm.etsiinf.sos.ws.*;
 import java.rmi.RemoteException;
+
+import main.es.upm.etsiinf.sos.ws.*;
 
 public class Client {
 

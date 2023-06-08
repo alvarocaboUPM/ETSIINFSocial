@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST)
  */
 
-    package es.upm.etsiinf.sos.ws;
+    package main.es.upm.etsiinf.sos.ws;
 
     /**
      *  ETSIINFSocialCallbackHandler Callback class, Users can extend this class and implement
@@ -49,7 +49,7 @@
             * override this method for handling normal response from login operation
             */
            public void receiveResultlogin(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse result
                         ) {
            }
 
@@ -65,7 +65,7 @@
             * override this method for handling normal response from removeUser operation
             */
            public void receiveResultremoveUser(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse result
                         ) {
            }
 
@@ -81,7 +81,7 @@
             * override this method for handling normal response from getMyFriendStates operation
             */
            public void receiveResultgetMyFriendStates(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse result
                         ) {
            }
 
@@ -97,7 +97,7 @@
             * override this method for handling normal response from getMyFriends operation
             */
            public void receiveResultgetMyFriends(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse result
                         ) {
            }
 
@@ -113,7 +113,7 @@
             * override this method for handling normal response from changePassword operation
             */
            public void receiveResultchangePassword(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse result
                         ) {
            }
 
@@ -129,7 +129,7 @@
             * override this method for handling normal response from getMyStates operation
             */
            public void receiveResultgetMyStates(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse result
                         ) {
            }
 
@@ -145,7 +145,7 @@
             * override this method for handling normal response from addFriend operation
             */
            public void receiveResultaddFriend(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse result
                         ) {
            }
 
@@ -163,7 +163,7 @@
             * override this method for handling normal response from publishState operation
             */
            public void receiveResultpublishState(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse result
                         ) {
            }
 
@@ -179,7 +179,7 @@
             * override this method for handling normal response from removeFriend operation
             */
            public void receiveResultremoveFriend(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse result
                         ) {
            }
 
@@ -195,7 +195,7 @@
             * override this method for handling normal response from addUser operation
             */
            public void receiveResultaddUser(
-                    es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE result
+                    main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE result
                         ) {
            }
 

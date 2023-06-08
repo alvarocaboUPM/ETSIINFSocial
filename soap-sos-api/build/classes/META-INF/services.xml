@@ -10,6 +10,7 @@
         <parameter name="ServiceClass">es.upm.etsiinf.sos.ETSIINFSocialSkeleton</parameter>
         <parameter name="modifyUserWSDLPortAddress">true</parameter>
         <parameter name="useOriginalwsdl">false</parameter>
+        <parameter name="ConfigContextTimeoutInterval" locked="false">30</parameter>
         <operation name="login" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://sos.etsiinf.upm.es">
             <actionMapping>urn:login</actionMapping>
             <outputActionMapping>urn:loginResponse</outputActionMapping>

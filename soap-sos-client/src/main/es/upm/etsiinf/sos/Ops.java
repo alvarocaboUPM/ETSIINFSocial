@@ -1,34 +1,35 @@
-package es.upm.etsiinf.sos;
+package main.es.upm.etsiinf.sos;
 
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.FriendList;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PasswordPair;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.State;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.StatesList;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.User;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Username;
-import es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse;
 import java.rmi.RemoteException;
+
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriend;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddFriendResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUser;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.AddUserResponseE;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePassword;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.ChangePasswordResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.FriendList;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStates;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendStatesResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriends;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyFriendsResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStates;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.GetMyStatesResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Login;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.LoginResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Logout;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PasswordPair;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishState;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.PublishStateResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriend;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveFriendResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUser;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.RemoveUserResponse;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.State;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.StatesList;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.User;
+import main.es.upm.etsiinf.sos.ws.ETSIINFSocialStub.Username;
 
 public class Ops {
 
