@@ -385,7 +385,6 @@ public class ETSIINFSocialSkeleton {
             res.set_return(aux);
             System.out.println("El usuario " + userID.getName() + " ha añadido como amigo al usuario "
                     + username.getUsername() + " con éxito.");
-            printListFriends();
             return res;
         } else {
             System.out.println("El usuario " + this.userID.getName() + " ya tiene añadido como amigo al usuario "
