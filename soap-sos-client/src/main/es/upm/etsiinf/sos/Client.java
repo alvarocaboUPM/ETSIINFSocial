@@ -27,6 +27,11 @@ public class Client {
 		//Diccionario que mapea ID con tarea
 		Tests.fillCaseMap();
 
+		Tests.tmpUser = Tests.generarNombre();
+		Tests.tmpPass = Tests.generarContraseña();
+
+		System.out.println("\nUsuario para tests -> " + Tests.tmpUser + "\n");
+
 		// Iniciar los hilos secuencialmente (sin login)
 		for (int i = 1; i < NumTest; i++) {
 			threads[i].run();

@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Tests {
+
+	static String tmpUser, tmpPass;
 	static boolean rootAccess = false;
 	static Random random = new Random();
 	static HashMap<Integer, String> caseMap = new HashMap<>();
-	
+
 	static String[] users = {
 			"Alejandro",
 			"Sofía",
@@ -85,79 +87,49 @@ public class Tests {
 	}
 
 	private static void realizarOperacion(int tipoOperacion, Ops op) throws RemoteException {
-		String tmpUser, tmpPass;
 
 		switch (tipoOperacion) {
 			case 0:
-				tmpUser = generarNombre();
-				tmpPass = generarContraseña();
 				rootAccess = tmpUser.equals("admin") && tmpPass.equals("admin");
-				rootAccess = true;
 				op.login("admin", "admin");
 				break;
 			case 1:
-				String addingUser = generarNombre();
-				if (rootAccess) {
-					op.addUser(addingUser);
-					break;
-				}
-
-				// System.out.println("Accion reservada para el usuario Administrador");
-				// System.out.print("¿Iniciar Sesion Como Administrador? (yes/no): ");
-
-				// boolean randomDecision = random.nextInt(2) == 1;
-				// System.out.print(randomDecision ? "yes\n" : "no\n");
-				// if (!randomDecision) {
-				// 	System.out.println("Cancelando operacion...");
-				// 	break;
-				// }
-
-				// System.out.println("Introduce las credenciales del Administrador:\n");
-				// tmpUser = generarNombre();
-				// tmpPass = generarContraseña();
-				// System.out.println("User: " + tmpUser);
-				// System.out.println("Password: " + tmpPass);
-
-				// if (tmpUser.equals("admin") && tmpPass.equals("admin")) {
-				// 	
-				// 	
-				// } else
-				// 	System.out.println("Error al Iniciar sesion como Administrador");
-				op.addUser(addingUser);
+				op.addUser(tmpUser);
 				break;
 			case 2:
-				String username = generarNombre();
+				String username = null;
+				while (username == tmpUser) {
+					username = generarNombre();
+				}
 
 				op.removeUser(username);
 				break;
 			case 3:
-
 
 				op.changePassword(op.contraseña,
 						generarContraseña());
 				break;
 			case 4:
 
-				op.addFriend(generarNombre());
+				op.addFriend(tmpUser);
 				break;
 			case 5:
-
+				// Exceptions
 				op.getMyFriends();
 				break;
 			case 6:
-
-				op.removeFriend(generarNombre());
+				op.removeFriend(tmpUser);
 				break;
 			case 7:
-
-				op.publishState(generarEstado());
+				// Exceptions
+				op.publishState(tmpUser);
 				break;
 			case 8:
-
+				// Exceptions
 				op.getMyStates();
 				break;
 			case 9:
-
+				// El usuario admin no es tu amigo?
 				op.getMyFriendStates(op.usuario);
 				break;
 			case 10:
@@ -171,11 +143,11 @@ public class Tests {
 		}
 	}
 
-	private static String generarNombre() {
+	public static String generarNombre() {
 		return users[random.nextInt(users.length)];
 	}
 
-	private static String generarContraseña() {
+	public static String generarContraseña() {
 		return pass[random.nextInt(pass.length)];
 	}
 
@@ -183,20 +155,20 @@ public class Tests {
 		return states[random.nextInt(states.length)];
 	}
 
-	public static void fillCaseMap(){
+	public static void fillCaseMap() {
 		caseMap = new HashMap<Integer, String>();
 
 		caseMap.put(0, "Loging in");
-        caseMap.put(1, "Adding user");
-        caseMap.put(2, "Removing user");
-        caseMap.put(3, "Chaning user password");
-        caseMap.put(4, "Adding a friend");
-        caseMap.put(5, "Getting friends list");
-        caseMap.put(6, "Removing a friend state");
-        caseMap.put(7, "Publishing state");
-        caseMap.put(8, "Getting states list");
-        caseMap.put(9, "Getting my friends states list");
-        caseMap.put(10, "Loging out");
-		
+		caseMap.put(1, "Adding user");
+		caseMap.put(2, "Removing user");
+		caseMap.put(3, "Chaning user password");
+		caseMap.put(4, "Adding a friend");
+		caseMap.put(5, "Getting friends list");
+		caseMap.put(6, "Removing a friend state");
+		caseMap.put(7, "Publishing state");
+		caseMap.put(8, "Getting states list");
+		caseMap.put(9, "Getting my friends states list");
+		caseMap.put(10, "Loging out");
+
 	}
 }
