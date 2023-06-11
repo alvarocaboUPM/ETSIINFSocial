@@ -8,3 +8,6 @@ soap-sos-api/build/classes/META-INF
 *.class
 *.jar
 .vscode/launch.json
+*.zip
+
+README
