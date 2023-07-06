@@ -65,7 +65,7 @@ ENV CATALINA_OPTS "-Xdebug -Xrunjdwp:transport=dt_socket,address=localhost:8000,
 
 #Enable tomcat as a service
 COPY docker/tomcat.service /etc/systemd/system/tomcat.service
-RUN systemctl enable tomcat.service
+# RUN systemctl enable tomcat.service
 #RUN systemctl start tomcat.service
 
 # Copy the source code into the container at /app
