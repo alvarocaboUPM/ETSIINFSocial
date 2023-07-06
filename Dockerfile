@@ -1,5 +1,5 @@
 # Use an official Java 7 runtime as a parent image
-FROM openjdk:7-jdk
+FROM openjdk:8-jdk
 
 # Set the working directory to /app
 WORKDIR /app

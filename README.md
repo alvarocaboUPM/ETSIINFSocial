@@ -8,13 +8,6 @@ SOAP webservice emulating a social network using Java Axio2
 [Oussama El Hatifi]()
 [Pablo Fernandez]()
 
-## TODO
-
-- Completar skeleton
-- Completar cliente
-   - Crear proyecto soap-sos-client
-   - Crear una clase main (archivo)/ funcion
-
 ## Dev-Start-Up
 
 ### Requirements
