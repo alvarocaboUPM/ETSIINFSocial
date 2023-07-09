@@ -71,7 +71,7 @@ public class ETSIINFSocialSkeleton {
                 responseFinal.setPwd(response.get_return().getPassword());
                 aux_final.set_return(responseFinal);
                 usersTotal.add(username);
-                
+
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña "
                         + aux_final.get_return().getPwd() + " exitosamente.");
                 return aux_final;
@@ -146,7 +146,7 @@ public class ETSIINFSocialSkeleton {
         res_aux = stub.existUser(exist);
         boolean check = res_aux.get_return().getResult();
 
-        if (!check) {
+        if (!check && !username.equals("admin")) {
             response.setResponse(false);
             responseFinal.set_return(response);
             System.out.println("El usuario " + username + " no está registrado en la red.");
@@ -158,17 +158,13 @@ public class ETSIINFSocialSkeleton {
                 response.setResponse(true);
                 responseFinal.set_return(response);
                 return responseFinal;
-            }
-            else {
+            } else {
                 response.setResponse(false);
                 responseFinal.set_return(response);
                 System.out.println("La sesión ya ha sido iniciada por " + this.userID.getName());
                 return responseFinal;
             }
         }
-
-        
-
 
         if (username.equals("admin")) {
             // El usuario admin no se gestiona a través del servicio
@@ -182,6 +178,7 @@ public class ETSIINFSocialSkeleton {
             return responseFinal;
 
         }
+
         es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd login_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd();
         login_aux.setName(username);
         login_aux.setPassword(password);
@@ -334,7 +331,6 @@ public class ETSIINFSocialSkeleton {
             System.out.println("No se puede eliminar al admin del sistema.");
             return res;
         }
-
 
         if (!check) { // no existe
             System.out.println("El usuario " + name + " no está registrado en la red.");
