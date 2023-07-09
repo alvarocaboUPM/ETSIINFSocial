@@ -71,7 +71,6 @@ public class ETSIINFSocialSkeleton {
                 responseFinal.setPwd(response.get_return().getPassword());
                 aux_final.set_return(responseFinal);
                 usersTotal.add(username);
-
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña "
                         + aux_final.get_return().getPwd() + " exitosamente.");
                 return aux_final;
