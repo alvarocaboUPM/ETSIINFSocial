@@ -19,37 +19,91 @@ public class testing {
          * PRUEBAS login
          */
 
-        
+        //Iniciamos sesion con user2
         Login prueba_login = new Login();
         User aux = new User();
-        aux.setName("pabloso");
-        aux.setPwd("pablitoclavounclabito2234");
+        aux.setName("user2");
+        aux.setPwd("user26867");
         prueba_login.setArgs0(aux);
         System.out.println("\n");
-        skeleton.login(prueba_login).get_return().getResponse();
+        System.out.println("LOGIN 1 = " +skeleton.login(prueba_login).get_return().getResponse());
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-        User adm = new User();
-        Login prueba_login2 = new Login();
-        adm.setName("admin");
-        adm.setPwd("admin");
-        prueba_login2.setArgs0(adm);
-        skeleton2.login(prueba_login2);
 
+        //Iniciamos sesion con admin
+        User user23 = new User();
+        Login prueba_login2 = new Login();
+        user23.setName("admin");
+        user23.setPwd("admin");
+        prueba_login2.setArgs0(user23);
+        System.out.println("LOGIN 2 = " + skeleton2.login(prueba_login2).get_return().getResponse());
+         
+
+        //Añadimos a user2
+        /*es.upm.etsiinf.sos.AddUser user1 = new AddUser();
+        Username prueba = new Username();
+        prueba.setUsername("user2");
+        user1.setArgs0(prueba);
+        System.out.println("\n");
+        AddUserResponse resAddUser = skeleton2.addUser(user1);
+        System.out.println("ADDUSER USER2 = " + resAddUser.get_return().getResponse());
+        String pwd = resAddUser.get_return().getPwd();
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");*/
+
+        //Añadimos a user1
+        /*es.upm.etsiinf.sos.AddUser user2 = new AddUser();
+        Username prueba2 = new Username();
+        prueba2.setUsername("user1");
+        user2.setArgs0(prueba2);
+        System.out.println("\n");
+        AddUserResponse resAddUser2 = skeleton.addUser(user2);
+        System.out.println("ADDUSER USER2 = " + resAddUser2.get_return().getResponse());
+        String pwd2 = resAddUser2.get_return().getPwd();
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");*/
         
+        
+
+
+        //admin eliminando a user2
+        Username prueba24 = new Username();
+        prueba24.setUsername("user2");
+        RemoveUser remove = new RemoveUser();
+        remove.setArgs0(prueba24);
+        System.out.println("\n");
+        RemoveUserResponse resRemove = skeleton2.removeUser(remove);
+        System.out.println("RESULTADO DE ADMIN REMOVING USER2 = " + resRemove.get_return().getResponse());
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------"); 
+
+
+        //Iniciamos sesion con user2 eliminado
+        Login prueba_login3 = new Login();
+        User aux2 = new User();
+        aux2.setName("user2");
+        aux2.setPwd("user26867");
+        prueba_login3.setArgs0(aux2);
+        System.out.println("\n");
+        System.out.println("LOGIN USER2 REMOVED = " +skeleton.login(prueba_login3).get_return().getResponse());
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");
+
+          
+
         /*
         * PRUEBAS logout
         */
-        es.upm.etsiinf.sos.Logout logout = new Logout();
+        /*es.upm.etsiinf.sos.Logout logout = new Logout();
         System.out.println("\n");
         //skeleton.logout(logout);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-        
+        */
         /*
          * PRUEBAS addUser
          */
-        es.upm.etsiinf.sos.AddUser user1 = new AddUser();
+       /*  es.upm.etsiinf.sos.AddUser user1 = new AddUser();
         Username prueba = new Username();
         prueba.setUsername("Laura");
         user1.setArgs0(prueba);
@@ -57,23 +111,23 @@ public class testing {
         //skeleton.addUser(user1);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-
+        */
         /*
          * PRUEBAS removeUser
          */
-        RemoveUser remove = new RemoveUser();
+       /*  RemoveUser remove = new RemoveUser();
         remove.setArgs0(prueba);
         System.out.println("\n");
         //skeleton.removeUser(remove);
         //aux2.setPwd("pruebita3230");
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-        
+        */
         
         /*
          * PRUEBAS changePassword
          */
-        es.upm.etsiinf.sos.ChangePassword pwd = new es.upm.etsiinf.sos.ChangePassword();
+        /*es.upm.etsiinf.sos.ChangePassword pwd = new es.upm.etsiinf.sos.ChangePassword();
         PasswordPair pwd_pair = new PasswordPair();
         pwd_pair.setNewpwd("pablitoclavounclabito2234");
         pwd_pair.setOldpwd("pablitoclavounclabito22");
@@ -83,11 +137,11 @@ public class testing {
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
         
-        
+        */
         /*
          * PRUEBAS addFriend
          */
-        AddFriend friend = new AddFriend();
+        /*AddFriend friend = new AddFriend();
         Username user_friend = new Username();
         user_friend.setUsername("pabloso");
         friend.setArgs0(user_friend);
@@ -106,12 +160,12 @@ public class testing {
 
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-
+            */
         /*
          * PRUEBAS removeFriend
          */
 
-        RemoveFriend removeF = new RemoveFriend();
+        /*RemoveFriend removeF = new RemoveFriend();
         RemoveFriendResponse responseFriend = new RemoveFriendResponse();
         Username userRemoveF = new Username();
         userRemoveF.setUsername("Jaime");
@@ -122,20 +176,20 @@ public class testing {
         System.out.println("-------------------------------------------------------------");
 
 
-
+        */
         /*
          * PRUEBAS getMyFriends
          */
-        GetMyFriendsResponse rsp = new GetMyFriendsResponse();
+        /*GetMyFriendsResponse rsp = new GetMyFriendsResponse();
         GetMyFriends gt = new GetMyFriends();
         //rsp = skeleton.getMyFriends(gt);
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-
+        */
         /*
          * PRUEBAS publishState
          */
-        PublishStateResponse res_state = new PublishStateResponse();
+       /*  PublishStateResponse res_state = new PublishStateResponse();
         PublishState state = new PublishState();
         State aux_state = new State();
         aux_state.setMessage("Estado 1");
@@ -177,12 +231,12 @@ public class testing {
         System.out.println(res_state.get_return().getResponse());
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-
+*/
         /*
          * PRUEBAS getMyStates
          */
-        GetMyStatesResponse res_get_states = new GetMyStatesResponse();
-        GetMyStates get_states = new GetMyStates();
+        /*GetMyStatesResponse res_get_states = new GetMyStatesResponse();
+        GetMyStates get_states = new GetMyStates();*/
         /*res_get_states = skeleton.getMyStates(get_states);
         String [] estados = res_get_states.get_return().getStates();
         for (int i = 0; i < estados.length; i++) {
@@ -192,7 +246,7 @@ public class testing {
         /*
          * PRUEBAS getMyFriendStates
          */
-        GetMyFriendStatesResponse res_get_states_friends = new GetMyFriendStatesResponse();
+        /*GetMyFriendStatesResponse res_get_states_friends = new GetMyFriendStatesResponse();
         GetMyFriendStates get_states_friends = new GetMyFriendStates();
         Username username = new Username();
         username.setUsername("pabloso");
@@ -205,7 +259,7 @@ public class testing {
         System.out.println(res_get_states_friends.get_return().getResult());
         System.out.println("\n");
         System.out.println("-------------------------------------------------------------");
-        
+        */
     }
     
 

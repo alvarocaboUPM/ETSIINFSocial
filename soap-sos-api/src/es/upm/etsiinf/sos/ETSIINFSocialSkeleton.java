@@ -30,7 +30,7 @@ public class ETSIINFSocialSkeleton {
     private static List<User> connected = new ArrayList<User>();
     private static User root = new User();
     private User userID;
-    private static boolean rootIsPresent = false;
+    private boolean rootIsPresent = false;
     private boolean adminLoggedIn = false;
     static List<Username> usersTotal = new ArrayList<Username>();
     FriendList friendsList = new FriendList();
@@ -68,10 +68,12 @@ public class ETSIINFSocialSkeleton {
             response = stub.addUser(user);
             if (response.get_return().getResult()) {
                 responseFinal.setResponse(true);
+                responseFinal.setPwd(response.get_return().getPassword());
                 aux_final.set_return(responseFinal);
                 usersTotal.add(username);
+                
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña "
-                        + response.get_return().getPassword() + " exitosamente.");
+                        + aux_final.get_return().getPwd() + " exitosamente.");
                 return aux_final;
             } else {
                 System.out.println("ERROR: usuario con nombre " + username.getUsername() + " ya registrado.");
@@ -135,6 +137,38 @@ public class ETSIINFSocialSkeleton {
 
         Response response = new Response();
         LoginResponse responseFinal = new LoginResponse();
+
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE res_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser exist = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username user_delete = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+        user_delete.setName(username);
+        exist.setUsername(user_delete);
+        res_aux = stub.existUser(exist);
+        boolean check = res_aux.get_return().getResult();
+
+        if (!check) {
+            response.setResponse(false);
+            responseFinal.set_return(response);
+            System.out.println("El usuario " + username + " no está registrado en la red.");
+            return responseFinal;
+        }
+
+        if (this.userID != null) {
+            if (this.userID.getName().equals(username)) {
+                response.setResponse(true);
+                responseFinal.set_return(response);
+                return responseFinal;
+            }
+            else {
+                response.setResponse(false);
+                responseFinal.set_return(response);
+                System.out.println("La sesión ya ha sido iniciada por " + this.userID.getName());
+                return responseFinal;
+            }
+        }
+
+        
+
 
         if (username.equals("admin")) {
             // El usuario admin no se gestiona a través del servicio
@@ -286,6 +320,13 @@ public class ETSIINFSocialSkeleton {
         res_aux = stub.existUser(exist);
         boolean check = res_aux.get_return().getResult();
 
+        if (this.userID == null) {
+            System.out.println("Por favor, inicia sesión para eliminar usuarios.");
+            aux.setResponse(false);
+            res.set_return(aux);
+            return res;
+        }
+
         // No se puede eliminar al admin
         if (name.equals("admin")) {
             aux.setResponse(false);
@@ -294,16 +335,16 @@ public class ETSIINFSocialSkeleton {
             return res;
         }
 
-        if (this.userID == null) {
-            System.out.println("Por favor, inicia sesión para eliminar usuarios.");
+
+        if (!check) { // no existe
+            System.out.println("El usuario " + name + " no está registrado en la red.");
             aux.setResponse(false);
             res.set_return(aux);
             return res;
         }
-
         // Solamente el propio usuario puede eliminarse a si mismo o el admin y ademas,
         // debe existir el usuario a borrar
-        if (iAmRoot() || this.userID.getName().equals(name) || check) {
+        if (iAmRoot() || this.userID.getName().equals(name)) {
             es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUserE remove = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUserE();
             es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser to_remove = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser();
             to_remove.setName(name);
@@ -316,7 +357,7 @@ public class ETSIINFSocialSkeleton {
         } else {
             aux.setResponse(false);
             res.set_return(aux);
-            System.out.println("Introduce un usuario válido para eliminar.");
+            System.out.println("El usuario " + this.userID.getName() + " no puede eliminar al usuario " + name + ".");
             return res;
         }
     }
