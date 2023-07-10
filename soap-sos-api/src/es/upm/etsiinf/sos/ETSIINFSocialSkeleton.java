@@ -30,11 +30,12 @@ public class ETSIINFSocialSkeleton {
     private static List<User> connected = new ArrayList<User>();
     private static User root = new User();
     private User userID;
-    private static boolean rootIsPresent = false;
+    private boolean rootIsPresent = false;
     private boolean adminLoggedIn = false;
     static List<Username> usersTotal = new ArrayList<Username>();
-    FriendList friendsList = new FriendList();
-    StatesList estados = new StatesList();
+
+    static Map<String, FriendList> friendList2 = new HashMap<String, FriendList>();
+    static StatesList estados = new StatesList();
     static Map<String, StatesList> mapaEstados = new HashMap<String, StatesList>();
 
     /**
@@ -68,10 +69,12 @@ public class ETSIINFSocialSkeleton {
             response = stub.addUser(user);
             if (response.get_return().getResult()) {
                 responseFinal.setResponse(true);
+                responseFinal.setPwd(response.get_return().getPassword());
                 aux_final.set_return(responseFinal);
                 usersTotal.add(username);
+
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña "
-                        + response.get_return().getPassword() + " exitosamente.");
+                        + aux_final.get_return().getPwd() + " exitosamente.");
                 return aux_final;
             } else {
                 System.out.println("ERROR: usuario con nombre " + username.getUsername() + " ya registrado.");
@@ -136,11 +139,40 @@ public class ETSIINFSocialSkeleton {
         Response response = new Response();
         LoginResponse responseFinal = new LoginResponse();
 
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE res_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUserResponseE();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser exist = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.ExistUser();
+        es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username user_delete = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.Username();
+        user_delete.setName(username);
+        exist.setUsername(user_delete);
+        res_aux = stub.existUser(exist);
+        boolean check = res_aux.get_return().getResult();
+
+        if (!check && !username.equals("admin")) {
+            response.setResponse(false);
+            responseFinal.set_return(response);
+            System.out.println("El usuario " + username + " no está registrado en la red.");
+            return responseFinal;
+        }
+
+        if (this.userID != null) {
+
+            if (this.userID.getName().equals(username)) {
+                response.setResponse(true);
+                responseFinal.set_return(response);
+                return responseFinal;
+            } else {
+                response.setResponse(false);
+                responseFinal.set_return(response);
+                System.out.println("La sesión ya ha sido iniciada por " + this.userID.getName());
+                return responseFinal;
+            }
+        }
         if (username.equals("admin")) {
             // El usuario admin no se gestiona a través del servicio
             // UPMAuthenticationAuthorization
             rootIsPresent = true;
             this.userID = user_aux;
+
             response.setResponse(true);
             responseFinal.set_return(response);
             System.out.println("¡Bienvenido admin, ha iniciado sesión con éxito!");
@@ -148,6 +180,7 @@ public class ETSIINFSocialSkeleton {
             return responseFinal;
 
         }
+
         es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd login_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd();
         login_aux.setName(username);
         login_aux.setPassword(password);
@@ -194,7 +227,7 @@ public class ETSIINFSocialSkeleton {
 
     private void printListFriends() {
 
-        String[] amigos = friendsList.getFriends();
+        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
         System.out.println("========================= <List> =========================");
         for (int i = 0; i < amigos.length; i++) {
             System.out.println("List entry [" + i + "] -> Name: " + amigos[i]);
@@ -223,11 +256,11 @@ public class ETSIINFSocialSkeleton {
 
     private boolean isFriend(Username user) {
         boolean result = false;
-        String[] amigos = friendsList.getFriends();
+        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
         if (amigos == null) {
             return false;
         }
-        for (int i = 0; i < friendsList.getFriends().length; i++) {
+        for (int i = 0; i < friendList2.get(this.userID.getName()).getFriends().length; i++) {
             if (amigos[i].equals(user.getUsername()))
                 result = true;
         }
@@ -286,6 +319,13 @@ public class ETSIINFSocialSkeleton {
         res_aux = stub.existUser(exist);
         boolean check = res_aux.get_return().getResult();
 
+        if (this.userID == null) {
+            System.out.println("Por favor, inicia sesión para eliminar usuarios.");
+            aux.setResponse(false);
+            res.set_return(aux);
+            return res;
+        }
+
         // No se puede eliminar al admin
         if (name.equals("admin")) {
             aux.setResponse(false);
@@ -294,16 +334,15 @@ public class ETSIINFSocialSkeleton {
             return res;
         }
 
-        if (this.userID == null) {
-            System.out.println("Por favor, inicia sesión para eliminar usuarios.");
+        if (!check) { // no existe
+            System.out.println("El usuario " + name + " no está registrado en la red.");
             aux.setResponse(false);
             res.set_return(aux);
             return res;
         }
-
         // Solamente el propio usuario puede eliminarse a si mismo o el admin y ademas,
         // debe existir el usuario a borrar
-        if (iAmRoot() || this.userID.getName().equals(name) || check) {
+        if (iAmRoot() || this.userID.getName().equals(name)) {
             es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUserE remove = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUserE();
             es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser to_remove = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.RemoveUser();
             to_remove.setName(name);
@@ -316,7 +355,7 @@ public class ETSIINFSocialSkeleton {
         } else {
             aux.setResponse(false);
             res.set_return(aux);
-            System.out.println("Introduce un usuario válido para eliminar.");
+            System.out.println("El usuario " + this.userID.getName() + " no puede eliminar al usuario " + name + ".");
             return res;
         }
     }
@@ -423,9 +462,21 @@ public class ETSIINFSocialSkeleton {
             return res;
         }
         // Si no, simplemente lo añadimos como amigo comprobando que no esté repetido ya
-        if (!esRepetido(username.getUsername(), friendsList)) {
+        FriendList amigos_aux = friendList2.get(this.userID.getName());
+        FriendList amigos2 = friendList2.get(username.getUsername());
 
-            friendsList.addFriends(username.getUsername());
+        if (amigos_aux == null) {
+            amigos_aux = new FriendList();
+            friendList2.put(this.userID.getName(), amigos_aux);
+        }
+        if (amigos2 == null) {
+            amigos2 = new FriendList();
+            friendList2.put(username.getUsername(), amigos2);
+        }
+
+        if (!esRepetido(username.getUsername(), amigos_aux)) {
+            amigos_aux.addFriends(username.getUsername());
+            amigos2.addFriends(this.userID.getName());
             aux.setResponse(true);
             res.set_return(aux);
             System.out.println("El usuario " + userID.getName() + " ha añadido como amigo al usuario "
@@ -524,7 +575,7 @@ public class ETSIINFSocialSkeleton {
     public void eliminar(String amigo) {
 
         int index = -1;
-        String[] amigos = friendsList.getFriends();
+        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
 
         for (int i = 0; i < amigos.length; i++) {
             if (amigos[i].equals(amigo)) {
@@ -545,7 +596,7 @@ public class ETSIINFSocialSkeleton {
                     j++;
                 }
             }
-            friendsList.setFriends(nuevoAmigos);
+            friendList2.get(this.userID.getName()).setFriends(nuevoAmigos);
         }
     }
 
@@ -569,7 +620,15 @@ public class ETSIINFSocialSkeleton {
             res.set_return(amigos);
             return res;
         } else {
-            amigos.setFriends(friendsList.getFriends());
+            FriendList amigosAux = friendList2.get(this.userID.getName());
+            if (amigosAux.getFriends() == null) {
+                System.out.println("La lista de amigos es vacía.");
+                amigos.setFriends(new String[0]);
+                amigos.setResult(true);
+                res.set_return(amigos);
+                return res;
+            }
+            amigos.setFriends(amigosAux.getFriends());
             amigos.setResult(true);
             res.set_return(amigos);
             System.out.println("Ha realizado la obtención de su lista de amigos con éxito.");
@@ -597,18 +656,18 @@ public class ETSIINFSocialSkeleton {
             res.set_return(res_aux);
             System.out.println("Debes iniciar sesión para publicar un estado.");
             return res;
-        } else {
-            String msg = publishState.getArgs0().getMessage();
-            estados.addStates(msg);
-            res_aux.setResponse(true);
-            res.set_return(res_aux);
-            mapaEstados.put(this.userID.getName(), estados);
-            System.out.println(
-                    "El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
-            printStates();
-            System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
-            return res;
         }
+        String msg = publishState.getArgs0().getMessage();
+        estados.addStates(msg);
+        res_aux.setResponse(true);
+        res.set_return(res_aux);
+        mapaEstados.put(this.userID.getName(), estados);
+        System.out.println(
+                "El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
+        printStates();
+        System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
+        return res;
+
     }
 
     /**
@@ -640,6 +699,7 @@ public class ETSIINFSocialSkeleton {
             res_aux.setResult(true);
             res_aux.setStates(last);
             res.set_return(res_aux);
+            System.out.println("SIZE ------> " + estados.getStates().length);
             System.out.println("Has obtenido los últimos 10 estados publicados con éxito.");
             return res;
         }
@@ -688,8 +748,10 @@ public class ETSIINFSocialSkeleton {
                 states.setResult(true);
                 states.setStates(last);
                 res.set_return(states);
+
                 System.out.println("Has obtenido los últimos 10 estados publicados de tu amigo [" + user.getUsername()
                         + "] con éxito.");
+                System.out.println("SIZE ------> " + lista_estados.getStates().length);
                 return res;
 
             }
