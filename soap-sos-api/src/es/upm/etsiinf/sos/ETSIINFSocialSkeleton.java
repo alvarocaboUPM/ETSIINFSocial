@@ -35,7 +35,6 @@ public class ETSIINFSocialSkeleton {
     static List<Username> usersTotal = new ArrayList<Username>();
 
     static Map<String, FriendList> friendList2 = new HashMap<String, FriendList>();
-    FriendList friendsList = new FriendList();
     static StatesList estados = new StatesList();
     static Map<String, StatesList> mapaEstados = new HashMap<String, StatesList>();
 
