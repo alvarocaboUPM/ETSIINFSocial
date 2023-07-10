@@ -25,18 +25,28 @@ import es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub;
  */
 public class ETSIINFSocialSkeleton {
 
-    private static Map<String, User> users = new HashMap<String, User>();
-
-    private static List<User> connected = new ArrayList<User>();
-    private static User root = new User();
+    private Map<String, User> usersMap;
+    private  List<User> connected;
+    private  User root;
     private User userID;
-    private boolean rootIsPresent = false;
-    private boolean adminLoggedIn = false;
-    static List<Username> usersTotal = new ArrayList<Username>();
+    private boolean rootIsPresent;
+    private boolean adminLoggedIn;
+    List<Username> usersTotal;
+    Map<String, FriendList> friendsMap;
+    StatesList estados;
+    Map<String, StatesList> stateMap;
 
-    static Map<String, FriendList> friendList2 = new HashMap<String, FriendList>();
-    static StatesList estados = new StatesList();
-    static Map<String, StatesList> mapaEstados = new HashMap<String, StatesList>();
+    public ETSIINFSocialSkeleton(){
+        usersMap = new HashMap<String, User>();
+        connected = new ArrayList<User>();
+        root = new User();
+        rootIsPresent = false;
+        adminLoggedIn = false;
+        usersTotal  = new ArrayList<Username>();
+        friendsMap = new HashMap<String, FriendList>();
+        estados = new StatesList();
+        stateMap = new HashMap<String, StatesList>();
+    }
 
     /**
      * Auto generated method signature
@@ -109,10 +119,10 @@ public class ETSIINFSocialSkeleton {
     private void printMap() {
         int i = 0;
         System.out.println("========================= <HashMap> =========================");
-        for (String name : users.keySet()) {
+        for (String name : usersMap.keySet()) {
             String key = name.toString();
-            String value = users.get(key).getName();
-            String pwd = users.get(key).getPwd();
+            String value = usersMap.get(key).getName();
+            String pwd = usersMap.get(key).getPwd();
             System.out.println("Map entry [" + i + "] -> Username: " + key + "| Name: " + value + "| Password: " + pwd);
             i += 1;
         }
@@ -227,7 +237,7 @@ public class ETSIINFSocialSkeleton {
 
     private void printListFriends() {
 
-        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
+        String[] amigos = friendsMap.get(this.userID.getName()).getFriends();
         System.out.println("========================= <List> =========================");
         for (int i = 0; i < amigos.length; i++) {
             System.out.println("List entry [" + i + "] -> Name: " + amigos[i]);
@@ -256,11 +266,11 @@ public class ETSIINFSocialSkeleton {
 
     private boolean isFriend(Username user) {
         boolean result = false;
-        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
+        String[] amigos = friendsMap.get(this.userID.getName()).getFriends();
         if (amigos == null) {
             return false;
         }
-        for (int i = 0; i < friendList2.get(this.userID.getName()).getFriends().length; i++) {
+        for (int i = 0; i < friendsMap.get(this.userID.getName()).getFriends().length; i++) {
             if (amigos[i].equals(user.getUsername()))
                 result = true;
         }
@@ -462,16 +472,16 @@ public class ETSIINFSocialSkeleton {
             return res;
         }
         // Si no, simplemente lo añadimos como amigo comprobando que no esté repetido ya
-        FriendList amigos_aux = friendList2.get(this.userID.getName());
-        FriendList amigos2 = friendList2.get(username.getUsername());
+        FriendList amigos_aux = friendsMap.get(this.userID.getName());
+        FriendList amigos2 = friendsMap.get(username.getUsername());
 
         if (amigos_aux == null) {
             amigos_aux = new FriendList();
-            friendList2.put(this.userID.getName(), amigos_aux);
+            friendsMap.put(this.userID.getName(), amigos_aux);
         }
         if (amigos2 == null) {
             amigos2 = new FriendList();
-            friendList2.put(username.getUsername(), amigos2);
+            friendsMap.put(username.getUsername(), amigos2);
         }
 
         if (!esRepetido(username.getUsername(), amigos_aux)) {
@@ -575,7 +585,7 @@ public class ETSIINFSocialSkeleton {
     public void eliminar(String amigo) {
 
         int index = -1;
-        String[] amigos = friendList2.get(this.userID.getName()).getFriends();
+        String[] amigos = friendsMap.get(this.userID.getName()).getFriends();
 
         for (int i = 0; i < amigos.length; i++) {
             if (amigos[i].equals(amigo)) {
@@ -596,7 +606,7 @@ public class ETSIINFSocialSkeleton {
                     j++;
                 }
             }
-            friendList2.get(this.userID.getName()).setFriends(nuevoAmigos);
+            friendsMap.get(this.userID.getName()).setFriends(nuevoAmigos);
         }
     }
 
@@ -620,7 +630,7 @@ public class ETSIINFSocialSkeleton {
             res.set_return(amigos);
             return res;
         } else {
-            FriendList amigosAux = friendList2.get(this.userID.getName());
+            FriendList amigosAux = friendsMap.get(this.userID.getName());
             if (amigosAux.getFriends() == null) {
                 System.out.println("La lista de amigos es vacía.");
                 amigos.setFriends(new String[0]);
@@ -661,11 +671,11 @@ public class ETSIINFSocialSkeleton {
         estados.addStates(msg);
         res_aux.setResponse(true);
         res.set_return(res_aux);
-        mapaEstados.put(this.userID.getName(), estados);
+        stateMap.put(this.userID.getName(), estados);
         System.out.println(
                 "El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
         printStates();
-        System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
+        System.out.println("El mapa tiene: " + stateMap.get(this.userID.getName()).getStates().length);
         return res;
 
     }
@@ -738,7 +748,7 @@ public class ETSIINFSocialSkeleton {
                 // User aux = new User();
                 // aux.setName(user.getUsername());
 
-                StatesList lista_estados = mapaEstados.get(nombre);
+                StatesList lista_estados = stateMap.get(nombre);
                 String[] mensajes = lista_estados.getStates();
                 int longitud = Math.min(mensajes.length, 10);
                 String[] last = new String[longitud];
