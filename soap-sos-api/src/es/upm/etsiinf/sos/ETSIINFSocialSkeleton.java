@@ -148,7 +148,6 @@ public class ETSIINFSocialSkeleton {
         res_aux = stub.existUser(exist);
         boolean check = res_aux.get_return().getResult();
 
-
         if (!check && !username.equals("admin")) {
             response.setResponse(false);
             responseFinal.set_return(response);
@@ -183,7 +182,6 @@ public class ETSIINFSocialSkeleton {
             return responseFinal;
 
         }
-
 
         es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd login_aux = new es.upm.fi2.UPMAuthenticationAuthorizationWSSkeletonStub.LoginBackEnd();
         login_aux.setName(username);
@@ -337,7 +335,6 @@ public class ETSIINFSocialSkeleton {
             System.out.println("No se puede eliminar al admin del sistema.");
             return res;
         }
-
 
         if (!check) { // no existe
             System.out.println("El usuario " + name + " no está registrado en la red.");
