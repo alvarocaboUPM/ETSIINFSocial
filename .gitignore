@@ -6,4 +6,5 @@ lib
 soap-sos-api/build/classes/META-INF
 
 *.class
-test
+*.jar
+test/README.md
