@@ -2,7 +2,6 @@ package es.upm.etsiinf.sos;
 
 import java.rmi.RemoteException;
 
-import es.upm.etsiinf.sos.model.xsd.PasswordPair;
 import es.upm.etsiinf.sos.model.xsd.State;
 import es.upm.etsiinf.sos.model.xsd.User;
 import es.upm.etsiinf.sos.model.xsd.Username;

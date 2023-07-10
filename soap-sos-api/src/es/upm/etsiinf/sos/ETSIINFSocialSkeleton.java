@@ -72,7 +72,7 @@ public class ETSIINFSocialSkeleton {
                 responseFinal.setPwd(response.get_return().getPassword());
                 aux_final.set_return(responseFinal);
                 usersTotal.add(username);
-                
+
                 System.out.println("Ha añadido al usuario " + username.getUsername() + " con contraseña "
                         + aux_final.get_return().getPwd() + " exitosamente.");
                 return aux_final;
@@ -155,13 +155,12 @@ public class ETSIINFSocialSkeleton {
         }
 
         if (this.userID != null) {
-            
+
             if (this.userID.getName().equals(username)) {
                 response.setResponse(true);
                 responseFinal.set_return(response);
                 return responseFinal;
-            }
-            else {
+            } else {
                 response.setResponse(false);
                 responseFinal.set_return(response);
                 System.out.println("La sesión ya ha sido iniciada por " + this.userID.getName());
@@ -173,7 +172,7 @@ public class ETSIINFSocialSkeleton {
             // UPMAuthenticationAuthorization
             rootIsPresent = true;
             this.userID = user_aux;
-            
+
             response.setResponse(true);
             responseFinal.set_return(response);
             System.out.println("¡Bienvenido admin, ha iniciado sesión con éxito!");
@@ -474,10 +473,10 @@ public class ETSIINFSocialSkeleton {
             amigos2 = new FriendList();
             friendList2.put(username.getUsername(), amigos2);
         }
-        
+
         if (!esRepetido(username.getUsername(), amigos_aux)) {
             amigos_aux.addFriends(username.getUsername());
-            amigos2.addFriends(this.userID.getName());  
+            amigos2.addFriends(this.userID.getName());
             aux.setResponse(true);
             res.set_return(aux);
             System.out.println("El usuario " + userID.getName() + " ha añadido como amigo al usuario "
@@ -657,18 +656,18 @@ public class ETSIINFSocialSkeleton {
             res.set_return(res_aux);
             System.out.println("Debes iniciar sesión para publicar un estado.");
             return res;
-        } else {
-            String msg = publishState.getArgs0().getMessage();
-            estados.addStates(msg);
-            res_aux.setResponse(true);
-            res.set_return(res_aux);
-            mapaEstados.put(this.userID.getName(), estados);
-            System.out.println(
-                    "El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
-            printStates();
-            System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
-            return res;
         }
+        String msg = publishState.getArgs0().getMessage();
+        estados.addStates(msg);
+        res_aux.setResponse(true);
+        res.set_return(res_aux);
+        mapaEstados.put(this.userID.getName(), estados);
+        System.out.println(
+                "El usuario " + this.userID.getName() + " ha publicado el estado [" + msg + "] con éxito.");
+        printStates();
+        System.out.println("El mapa tiene: " + mapaEstados.get(this.userID.getName()).getStates().length);
+        return res;
+
     }
 
     /**
@@ -749,7 +748,7 @@ public class ETSIINFSocialSkeleton {
                 states.setResult(true);
                 states.setStates(last);
                 res.set_return(states);
-                
+
                 System.out.println("Has obtenido los últimos 10 estados publicados de tu amigo [" + user.getUsername()
                         + "] con éxito.");
                 System.out.println("SIZE ------> " + lista_estados.getStates().length);
